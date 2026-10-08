@@ -39,7 +39,7 @@ Provides context-aware recommendations, such as:
 **Task Automation & Assistance**
 
 - Pre-fills forms, generates referrals, and drafts messages to patients or staff.
-- Automates coding and billing suggestions based on documentation.
+- Suggests codes from the documentation for you to review.
 - Reduces clicks and manual data entry to streamline tasks.
 
 **Overall Experience**

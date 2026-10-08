@@ -56,7 +56,7 @@ Unlike Abridge, which primarily focuses on documentation fidelity, CARE-E provid
 
 ### 3. Streamlined Medical Coding
 
-CARE-E ensures that AI-generated notes are not just accurate but optimized for compliance and billing coding. Our system automatically detects and documents ICD-10/CPT coding from encounters, giving providers confidence that notes are both clinically and financially sound.
+CARE-E suggests ICD-10 and CPT codes from the encounter for the clinician to accept or change. It's documentation support, not billing: CARE-E never submits claims, and the clinician stays in control of every code.
 
 ### 4. Customization for Specialty-Specific Workflows
 
@@ -68,6 +68,6 @@ CARE-E incorporates secure patient engagement tools, allowing for real-time summ
 
 ## Final Thoughts: CARE-E’s Unique Value in the AI-Driven Healthcare Landscape
 
-The Abridge white paper underscores the importance of robust AI evaluation methods in clinical documentation, and CARE-E shares this dedication to high-quality, clinician-approved AI workflows. However, CARE-E sets itself apart by expanding beyond documentation to automate clinical workflows, optimize billing, enhance decision support, and offer automation customization.
+The Abridge white paper underscores the importance of robust AI evaluation methods in clinical documentation, and CARE-E shares this dedication to high-quality, clinician-approved AI workflows. However, CARE-E sets itself apart by expanding beyond documentation to support clinical workflows, enhance decision support, and offer automation customization.
 
 As the industry continues to embrace AI-powered healthcare solutions, CARE-E stands at the forefront, providing a holistic, efficient, and intelligent AI assistant designed to truly empower clinicians.

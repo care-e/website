@@ -4,7 +4,6 @@ import { ROUTES } from '../consts';
 export const SOLUTION_NAV = [
   { label: 'Clinical Documentation', href: ROUTES.cdi },
   { label: 'Decision Support', href: ROUTES.cds },
-  { label: 'Automation (RPA)', href: ROUTES.rpa },
   { label: 'Patient Engagement', href: ROUTES.patientEngagement },
   { label: 'Analytics', href: ROUTES.analytics },
   { label: 'Use Cases', href: ROUTES.realWorld },

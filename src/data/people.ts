@@ -25,7 +25,7 @@ export const LEADERSHIP: Person[] = [
     bio: [
       'Bryan Sable is a seasoned entrepreneur, growth strategist, and business leader with over a decade of experience in launching, scaling, and managing innovative products and solutions in the healthcare and life sciences industries. As a co-founder of CARE-E Ai, he brings a wealth of expertise in business development, marketing, and product strategy to drive innovation in clinical AI-assisted workflows.',
       'With a Master of Business Administration from Michigan State University (2017), Bryan has cultivated a diverse skill set spanning marketing, sales strategy, and product management. His career includes leadership roles at globally recognized companies such as Abbott Molecular, bioMérieux, and Neogen, where he drove product strategy for his portfolio, focusing on successful launches, accelerated adoption, and market expansion.',
-      'At CARE-E Ai, Bryan leverages his extensive industry experience to revolutionize clinician workflows through AI, machine learning, and robotic process automation. His strategic vision and expertise continue to shape the future of AI-driven healthcare solutions.',
+      'At CARE-E Ai, Bryan leverages his extensive industry experience to revolutionize clinician workflows through AI and machine learning. His strategic vision and expertise continue to shape the future of AI-driven healthcare solutions.',
     ],
   },
   {

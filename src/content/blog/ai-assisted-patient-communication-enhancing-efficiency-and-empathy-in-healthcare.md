@@ -40,7 +40,7 @@ At CARE-E Ai, we recognize the potential of AI to bridge communication gaps whil
 
 ## How CARE-E Elevates AI-Powered Patient Communication
 
-CARE-E elevates AI-powered patient communication by delivering seamless, omnichannel engagement that meets patients where they are—whether via text messages, emails, phone calls, or patient portals. By automating critical patient interactions such as scheduling, assessments, and enrollments, CARE-E reduces administrative workload while ensuring timely, accurate, and personalized communication.
+CARE-E elevates AI-powered patient communication by delivering seamless, omnichannel engagement that meets patients where they are—whether via text messages, emails, phone calls, or patient portals. By automating critical patient interactions such as assessments and enrollments, CARE-E reduces administrative workload while ensuring timely, accurate, and personalized communication.
 
 ## Beyond Chatbots: AI as a Strategic Partner in Healthcare
 
