@@ -27,12 +27,12 @@ const revolutionizes = [
   {
     title: 'Coding Support',
     icon: solutionIcon('technical-support-1.svg'),
-    text: 'CARE-E’s AI-driven algorithms automatically map clinical details to the correct ICD-10 codes, ensuring precise coding for accurate reimbursement and reducing administrative burden.',
+    text: 'CARE-E suggests ICD-10 codes from the clinical details in the note. You accept or change each one; CARE-E never bills.',
   },
   {
     title: 'Audit Readiness',
     icon: auditIcon.src,
-    text: 'By ensuring thorough documentation, CARE-E minimizes the risk of unfavorable audit outcomes and associated penalties, safeguarding healthcare organizations against compliance risks.',
+    text: 'Thorough, consistent documentation and a log of every action in the visit make it easier to answer an audit.',
   },
 ];
 
@@ -43,9 +43,9 @@ const benefits = [
     text: 'CARE-E reduces administrative burdens by automating repetitive tasks, such as data entry and documentation review.',
   },
   {
-    title: 'Improved Financial Performance',
+    title: 'Complete Records',
     icon: solutionIcon('sales-1.svg'),
-    text: 'Accurate documentation and coding ensure proper reimbursement, optimizing revenue cycles for both inpatient and outpatient settings.',
+    text: 'Notes that capture the full picture of the visit, so the record supports the coding your team does.',
   },
   {
     title: 'Enhanced Patient Care',
@@ -85,7 +85,7 @@ const benefits = [
       <p class="mt-4 text-lead font-medium">
         Clinical documentation is the foundation of patient care, capturing key details including
         diagnoses, treatment plans, and progress notes in the medical record. Accurate documentation
-        ensures clear communication among care teams, supports proper coding and billing, and helps
+        ensures clear communication among care teams, supports accurate coding, and helps
         maintain compliance with healthcare regulations.
       </p>
     </MediaSplit>
@@ -107,7 +107,7 @@ const benefits = [
           By enhancing documentation, CDI supports better communication among care teams, reduces
           administrative burden, and ensures that records reflect the full scope of patient care. As
           healthcare evolves, CDI plays a critical role in improving efficiency, reducing errors,
-          and optimizing reimbursement—allowing clinicians to focus more on their patients and less
+          and closing gaps in the record—allowing clinicians to focus more on their patients and less
           on paperwork.
         </p>
       </div>
@@ -130,7 +130,7 @@ const benefits = [
           lead: 'Complex compliance and regulatory requirements',
           text: '– that demand precision.',
         },
-        { lead: 'Accurate coding demands', text: '– to ensure proper reimbursement.' },
+        { lead: 'Accurate coding demands', text: '– that depend on a complete record.' },
       ]}
     />
     <p class="mt-6 text-lead font-medium">
@@ -167,7 +167,7 @@ const benefits = [
         hemoglobin A1c test and a cardiology referral. The AI ensures accurate documentation of the
         primary complaint (fatigue, ICD-10: R53.83), identifies comorbidities, and streamlines the
         generation of a comprehensive encounter summary, treatment plan, and patient orders. This
-        process enhances coding accuracy for billing, supports quality reporting, and improves
+        process supports accurate coding and quality reporting, and improves
         continuity of care by addressing the patient’s full spectrum of health needs.
       </p>
     </MediaSplit>
@@ -189,7 +189,7 @@ const benefits = [
         class="mt-4"
         items={[
           'Bridge the gap between clinical care and accurate coding.',
-          'Reduce claim denials and the need for resubmissions.',
+          'Fewer documentation gaps to chase after the visit.',
           'Support documentation and coding for quality initiatives, including MACRA/MIPS and other quality measures and Social Determinants of Health (SDOH) reporting.',
         ]}
       />

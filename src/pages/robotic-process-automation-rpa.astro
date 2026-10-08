@@ -53,8 +53,8 @@ const tasks = [
     text: '– Automates patient record updates to reduce documentation workload.',
   },
   {
-    lead: 'Claims Processing & Billing',
-    text: '– Automates claim suggestions and tracking to prevent denials.',
+    lead: 'Coding Support',
+    text: '– Suggests ICD-10 codes from the visit for your review. CARE-E never bills.',
   },
   {
     lead: 'Patient Scheduling & Reminders',
@@ -81,9 +81,9 @@ const useCases = [
     text: 'Automating the collection and entry of patient demographics, insurance information, and consent forms reduces wait times and ensures data accuracy.',
   },
   {
-    title: 'Medical Billing Coding',
+    title: 'Coding Suggestions',
     icon: solutionIcon('sales-1-1.svg'),
-    text: 'CARE-E streamlines the insurance claim submission process by recommending ICD-10 codes based on the patient encounter.',
+    text: 'CARE-E recommends ICD-10 codes based on the patient encounter. You accept or change them; your team handles billing.',
   },
   {
     title: 'Appointment Scheduling',
@@ -91,9 +91,9 @@ const useCases = [
     text: 'Automating appointment reminders and rescheduling processes minimizes no-shows and optimizes clinical schedules.',
   },
   {
-    title: 'Billing and Revenue Cycle Operations',
+    title: 'Data Entry and Reconciliation',
     icon: solutionIcon('regulatory-compliance-1-1.svg'),
-    text: 'RPA ensures seamless data entry and reconciliation across billing systems, reducing errors and enhancing financial outcomes.',
+    text: 'Captures visit details once, so staff aren’t re-keying the same information across systems.',
   },
   {
     title: 'Regulatory Compliance Reporting',
@@ -128,7 +128,7 @@ const impact = [
 
 <SolutionLayout
   title="Robotic Process Automation (RPA)"
-  description="CARE-E uses robotic process automation to handle scheduling, claims, EHR data entry and other repetitive healthcare tasks—cutting errors and freeing staff for patient care."
+  description="CARE-E uses robotic process automation to handle documentation, data entry and other repetitive healthcare tasks—cutting errors and freeing staff for patient care."
 >
   <section>
     <SectionTitle
@@ -139,7 +139,7 @@ const impact = [
     <MediaSplit
       class="mt-10"
       image={whatIs}
-      imageAlt="Robot assistant automating computer and billing tasks"
+      imageAlt="Robot assistant automating computer tasks"
       imageWidth={422}
       reverse
     >
@@ -147,7 +147,7 @@ const impact = [
       <p class="mt-4 text-lead font-medium">
         Robotic Process Automation (RPA) is a technology that automates repetitive administrative
         and clinical tasks, reducing manual work for healthcare providers. It streamlines processes
-        like patient scheduling, claims processing, and updating EHRs in real time. By minimizing
+        like patient scheduling, form filling, and updating records. By minimizing
         manual data entry and improving accuracy, RPA helps healthcare teams work more efficiently,
         reducing errors and administrative burdens.
       </p>

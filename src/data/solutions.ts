@@ -43,7 +43,7 @@ export const SOLUTION_TABS: SolutionTab[] = [
       },
       {
         title: 'Coding Support',
-        text: 'AI-driven mapping of clinical details to ICD-10 codes for billing recommendations and reduced admin workload.',
+        text: 'ICD-10 code suggestions from the clinical details, for you to accept or change. CARE-E never bills.',
         icon: icon('technical-support-2'),
       },
       {
