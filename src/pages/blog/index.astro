@@ -1,12 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import SectionTitle from '../../components/solutions/SectionTitle.astro';
 import PostCard from '../../components/blog/PostCard.astro';
+import { getPosts } from '../../lib/blog';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getPosts();
+const [featured, ...recent] = posts;
 ---
 
 <BaseLayout
@@ -14,14 +12,42 @@ const posts = (await getCollection('blog')).sort(
   description="Insights from CARE-E Ai on clinical documentation, physician burnout, patient engagement, EHR integration and AI in healthcare."
 >
   <div class="bg-wash -mt-20 pt-20 pb-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem] lg:pb-[9.375rem]">
-    <div class="container-page pt-10 lg:pt-[6.25rem]">
-      <SectionTitle as="h1" lead="CARE-E" highlight="Blog" />
-      {posts.length ? (
-        <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:mt-[3.125rem] lg:grid-cols-3 lg:gap-[1.25rem]">
-          {posts.map((post) => (
-            <PostCard post={post} />
-          ))}
-        </ul>
+    <div class="container-page pt-10 lg:pt-[5rem]">
+      <h1 class="text-display font-semibold">
+        <span class="text-brand">Our</span> Blog
+      </h1>
+
+      {featured ? (
+        <>
+          <section aria-labelledby="recent-heading" class="mt-6 lg:mt-[1.875rem]">
+            <h2 id="recent-heading" class="text-title leading-[1.236] font-bold text-brand">
+              Recent
+            </h2>
+            <div class="mt-6 grid gap-5 lg:mt-[2.5rem] lg:grid-cols-2 lg:gap-[1.875rem]">
+              <PostCard post={featured} variant="featured" maxTags={3} />
+              <ul class="grid gap-5 lg:gap-[1.25rem]">
+                {recent.slice(0, 3).map((post) => (
+                  <li>
+                    <PostCard post={post} variant="compact" maxTags={2} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section aria-labelledby="all-heading" class="mt-14 lg:mt-[5rem]">
+            <h2 id="all-heading" class="text-title leading-[1.236] font-bold text-brand">
+              All Blog Posts
+            </h2>
+            <ul class="mt-6 grid gap-6 md:grid-cols-2 lg:mt-[2.5rem] lg:grid-cols-3 lg:gap-[1.875rem]">
+              {posts.map((post) => (
+                <li>
+                  <PostCard post={post} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        </>
       ) : (
         <p class="mt-8 text-lead font-medium">New articles are coming soon.</p>
       )}

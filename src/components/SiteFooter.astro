@@ -1,5 +1,6 @@
 ---
 import LogoWhite from '../assets/logos/care-e-logo-white.svg';
+import HipaaBadge from '../assets/logos/hipaa-compliant.svg';
 import XIcon from '../assets/icons/x.svg';
 import LinkedInIcon from '../assets/icons/linkedin.svg';
 import { CONTACT_EMAILS, FOOTER_NAV, SOCIAL_LINKS } from '../consts';
@@ -16,6 +17,11 @@ const socials = [
       <a href="/" aria-label="CARE-E home" class="inline-block">
         <LogoWhite class="h-16 w-auto lg:h-[6rem]" />
       </a>
+      <HipaaBadge
+        class="mt-5 block h-12 w-auto lg:h-[3.75rem]"
+        role="img"
+        aria-label="HIPAA Compliant"
+      />
       <p class="mt-6 text-footer-link">Email Address</p>
       <ul class="mt-3 space-y-1">
         {CONTACT_EMAILS.map((email) => (

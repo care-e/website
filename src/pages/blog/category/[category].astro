@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import CategoryTags from '../../../components/blog/CategoryTags.astro';
+import { allCategories, categorySlug, getPosts, type Post } from '../../../lib/blog';
+import { ROUTES } from '../../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  const categories = allCategories(posts);
+  return categories.map((name) => ({
+    params: { category: categorySlug(name) },
+    props: {
+      name,
+      categories,
+      posts: posts.filter((p) => p.data.categories.includes(name)),
+    },
+  }));
+}
+
+interface Props {
+  name: string;
+  categories: string[];
+  posts: Post[];
+}
+
+const { name, categories, posts } = Astro.props;
+---
+
+<BaseLayout title={`${name} – Blog`} description={`CARE-E Ai articles about ${name}.`}>
+  <div class="bg-wash -mt-20 pt-20 pb-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem] lg:pb-[9.375rem]">
+    <div class="container-page pt-10 lg:pt-[5rem]">
+      <a href={ROUTES.blog} class="font-semibold text-brand hover:underline">
+        ← Our Blog
+      </a>
+      <h1 class="mt-4 text-display font-semibold">
+        <span class="text-brand">{name}</span>
+      </h1>
+      <p class="mt-2 text-lead font-medium">
+        {posts.length} {posts.length === 1 ? 'article' : 'articles'}
+      </p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:mt-[2.5rem] lg:grid-cols-3 lg:gap-[1.875rem]">
+        {posts.map((post) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))}
+      </ul>
+      <section aria-labelledby="browse-heading" class="mt-14 lg:mt-[5rem]">
+        <h2 id="browse-heading" class="text-title leading-[1.236] font-bold text-brand">
+          Browse by category
+        </h2>
+        <CategoryTags class="mt-5" categories={categories} current={name} />
+      </section>
+    </div>
+  </div>
+</BaseLayout>

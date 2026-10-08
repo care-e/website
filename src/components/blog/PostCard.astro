@@ -1,39 +1,68 @@
 ---
 import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
+import CategoryTags from './CategoryTags.astro';
+import { excerpt, formatDate, type Post } from '../../lib/blog';
 
-type Props = { post: CollectionEntry<'blog'> };
+interface Props {
+  post: Post;
+  /** "grid": image on top. "compact": small image beside the text. "featured": large card. */
+  variant?: 'grid' | 'compact' | 'featured';
+  /** Limit the number of category tags shown (all by default). */
+  maxTags?: number;
+  headingLevel?: 'h2' | 'h3';
+}
 
-const { post } = Astro.props;
+const { post, variant = 'grid', maxTags, headingLevel: H = 'h3' } = Astro.props;
 const href = `/blog/${post.id}/`;
+const { title, heroImage, categories, pubDate } = post.data;
+const tags = maxTags ? categories.slice(0, maxTags) : categories;
+const compact = variant === 'compact';
 ---
 
-<li class="border-brand-gradient flex flex-col overflow-hidden rounded-[0.625rem]">
-  {post.data.heroImage && (
-    <a href={href} tabindex="-1" aria-hidden="true">
-      <Image
-        src={post.data.heroImage}
-        alt=""
-        width={520}
-        densities={[1, 2]}
-        class="aspect-[16/9] w-full object-cover"
-      />
-    </a>
+<article
+  class:list={[
+    'group relative flex h-full rounded-[1.25rem] border-2 border-brand-green bg-white p-[0.875rem] transition-shadow focus-within:shadow-lg hover:shadow-lg',
+    compact ? 'flex-row gap-4 lg:gap-[1.25rem]' : 'flex-col',
+  ]}
+>
+  {heroImage && (
+    <Image
+      src={heroImage}
+      alt=""
+      width={compact ? 150 : variant === 'featured' ? 640 : 400}
+      densities={[1, 2]}
+      class:list={[
+        'rounded-[0.75rem] object-cover',
+        compact ? 'aspect-square w-24 shrink-0 self-start sm:w-[9.375rem]' : 'aspect-[16/9] w-full',
+      ]}
+    />
   )}
-  <div class="flex flex-1 flex-col p-6 lg:p-[1.875rem]">
-    <time datetime={post.data.pubDate.toISOString()} class="text-base font-semibold text-ink-muted">
-      {post.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}
+  <div class:list={['flex min-w-0 flex-1 flex-col', !compact && 'mt-4 px-1']}>
+    <time datetime={pubDate.toISOString()} class="text-[0.9375rem] font-semibold text-ink-muted">
+      {formatDate(pubDate)}
     </time>
-    <h2 class="mt-2 text-[1.5625rem] leading-[1.3] font-bold text-brand">
-      <a href={href} class="hover:underline">
-        {post.data.title}
+    <H
+      class:list={[
+        'mt-1 font-bold',
+        variant === 'featured'
+          ? 'text-[1.875rem] leading-[1.25]'
+          : compact
+            ? 'text-[1.25rem] leading-[1.3]'
+            : 'text-[1.5rem] leading-[1.3]',
+      ]}
+    >
+      <a href={href} class="after:absolute after:inset-0 group-hover:text-brand">
+        {title}
       </a>
-    </h2>
-    <p class="mt-3 line-clamp-4 flex-1 text-[1.125rem] leading-[1.6] font-medium">
-      {post.data.description}
+    </H>
+    <p
+      class:list={[
+        'mt-2 font-medium text-ink-soft',
+        compact ? 'line-clamp-2 text-[1rem] leading-[1.5]' : 'text-[1.125rem] leading-[1.55]',
+      ]}
+    >
+      {excerpt(post, variant === 'featured' ? 40 : 30)}
     </p>
-    <a href={href} class="mt-4 font-semibold text-brand underline hover:no-underline">
-      Read more<span class="sr-only">: {post.data.title}</span>
-    </a>
+    <CategoryTags class="mt-4" categories={tags} />
   </div>
-</li>
+</article>
