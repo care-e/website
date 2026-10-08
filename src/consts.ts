@@ -11,6 +11,9 @@ export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mbgdoakj';
 // promises to email it instead of revealing it in place.
 export const WALKTHROUGH_VIDEO_URL = '';
 
+// Bryan's Google Calendar booking page (the same open slots listed on bryansable.com).
+export const BOOKING_URL = 'https://calendar.app.google/mwtHXStugpdYxipi8';
+
 export const CONTACT_EMAILS = ['sales@care-e.ai', 'info@care-e.ai'];
 
 export const SOCIAL_LINKS = {

@@ -5,6 +5,7 @@ import Button from '../components/Button.astro';
 import ConsentCard from '../components/product/ConsentCard.astro';
 import WalkthroughGate from '../components/product/WalkthroughGate.astro';
 import ContactSection from '../components/ContactSection.astro';
+import { BOOKING_URL } from '../consts';
 // Real captures from a test visit (sample patient, played-back conversation), cropped tight.
 import noteBuilds from '../assets/product/note-builds.jpg';
 import reviewCheck from '../assets/product/review-check.jpg';
@@ -35,7 +36,7 @@ const afterBooking = [
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
         <Button href="#walkthrough" class="h-[3.75rem] px-8">Watch the full visit</Button>
-        <Button href="#contact" variant="outline" class="h-[3.75rem] px-8">Book a demo</Button>
+        <Button href={BOOKING_URL} target="_blank" rel="noopener" variant="outline" class="h-[3.75rem] px-8">Book a demo</Button>
       </div>
     </section>
   </div>
@@ -104,6 +105,10 @@ const afterBooking = [
       <h2 class="max-w-[52rem] text-display font-semibold">
         What happens <span class="text-brand">after you book.</span>
       </h2>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <Button href={BOOKING_URL} target="_blank" rel="noopener" class="h-[3.75rem] px-8">Pick a time</Button>
+        <p class="text-lead font-medium text-ink-soft/80">Or send us a note below and we’ll reach out.</p>
+      </div>
       <ol class="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
         {afterBooking.map((step, i) => (
           <li class="rounded-[1rem] bg-[#f4f8fc] p-6 lg:p-7">
