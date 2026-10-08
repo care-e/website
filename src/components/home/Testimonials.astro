@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import dakseshPatel from '../../assets/people/daksesh-patel.png';
+import karenSable from '../../assets/people/karen-sable.png';
+import { ROUTES } from '../../consts';
+
+// Partner quotes from the previous care-e.ai site.
+const testimonials = [
+  {
+    quote:
+      'It’s a game-changer for productivity! With CARE-E taking care of administrative tasks, the focus can return to caring for my patients.',
+    name: 'Dr. Daksesh Patel',
+    photo: dakseshPatel,
+  },
+  {
+    quote:
+      'CARE-E helps care teams see more patients without the stress, freeing up time and improving work-life balance.',
+    name: 'Dr. Karen Sable',
+    photo: karenSable,
+  },
+];
+---
+
+<section class="bg-white py-14 lg:py-[5.5rem]">
+  <div class="container-page">
+    <h2 class="text-center text-display font-semibold">
+      What Our <span class="text-brand">Partners Are Saying</span>
+    </h2>
+    <ul class="mx-auto mt-10 grid max-w-[69.5rem] gap-8 md:grid-cols-2 lg:mt-[4.5625rem] lg:gap-[3.3125rem]">
+      {testimonials.map((t) => (
+        <li>
+          <figure class="flex h-full flex-col">
+            <blockquote class="flex-1 rounded-t-[0.625rem] rounded-bl-[6.25rem] bg-brand-tint px-5 pt-5 pb-14 text-quote font-medium lg:px-[1.875rem] lg:pt-[1.875rem]">
+              <p>“{t.quote}”</p>
+            </blockquote>
+            <div class="relative h-[6.5625rem]">
+              <div
+                class="absolute inset-0 rounded-br-[0.625rem] bg-brand-tint"
+                aria-hidden="true"
+              />
+              <figcaption class="absolute inset-y-0 left-0 flex w-[70%] items-center gap-2.5 rounded-tr-[6.25rem] bg-white pl-5">
+                <Image
+                  src={t.photo}
+                  alt=""
+                  width={85}
+                  height={85}
+                  densities={[1, 2]}
+                  class="size-[3.75rem] rounded-full object-cover lg:size-[5.3125rem]"
+                />
+                <a href={ROUTES.partners} class="text-nav font-semibold hover:text-brand">
+                  {t.name}
+                </a>
+              </figcaption>
+            </div>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

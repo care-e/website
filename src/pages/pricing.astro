@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import Button from '../components/Button.astro';
+import { ROUTES } from '../consts';
+
+// Plans from the previous care-e.ai site, which published no prices or feature lists.
+const plans = [
+  { name: 'Basic', description: 'For individual practitioners or small clinics.' },
+  {
+    name: 'Professional',
+    description: 'For medium to large practices with more comprehensive needs.',
+    featured: true,
+  },
+  { name: 'Enterprise', description: 'For health systems and large organizations.' },
+];
+---
+
+<BaseLayout
+  title="Pricing"
+  description="CARE-E plans for individual practitioners, growing practices and large health systems. Contact our team for pricing tailored to your organization."
+>
+  <div class="bg-wash -mt-20 pt-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem]">
+    <section class="container-page pt-10 pb-20 lg:pt-[6.25rem] lg:pb-[5.5rem]">
+      <SectionTitle as="h1" lead="Choose Your" highlight="Plan" />
+      <ul class="mt-10 grid items-center gap-6 md:grid-cols-3 md:gap-0 lg:mt-[4.6875rem] lg:px-0">
+        {plans.map((plan) => (
+          <li
+            class:list={[
+              'flex flex-col rounded-[1.25rem] px-5 text-center lg:px-[1.25rem]',
+              plan.featured
+                ? 'z-10 bg-white py-10 shadow-[0_0.75rem_2.5rem_rgb(0_0_0/0.15)] md:-mx-1 lg:min-h-[30rem] lg:py-[3.75rem]'
+                : 'border border-white/60 bg-white/35 py-10 shadow-[0_0.5rem_1.5rem_rgb(0_0_0/0.08)] backdrop-blur-sm lg:min-h-[28rem] lg:py-[3.75rem]',
+            ]}
+          >
+            <h2
+              class:list={[
+                'text-title leading-[1.236] font-bold',
+                plan.name !== 'Basic' && 'text-brand',
+              ]}
+            >
+              {plan.name}
+            </h2>
+            <p class="mt-6 flex-1 text-lead leading-[1.6] font-semibold">{plan.description}</p>
+            <p class="mt-4 text-lead font-medium">Contact us for pricing.</p>
+            <Button href={ROUTES.contact} class="mt-8 h-[3.75rem] w-full lg:mt-[3.75rem]">
+              Get Started
+            </Button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

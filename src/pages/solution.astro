@@ -1,0 +1,76 @@
+---
+import SolutionLayout from '../layouts/SolutionLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import IconCards from '../components/solutions/IconCards.astro';
+import { solutionIcon } from '../data/solution-nav';
+import { ROUTES } from '../consts';
+
+// Overview of the solution pages. Each description is the lead-in from that page
+// (or the matching Home page tab) on the previous care-e.ai site.
+const solutions = [
+  {
+    title: 'Clinical Documentation',
+    href: ROUTES.cdi,
+    icon: solutionIcon('accuracy-1.svg'),
+    text: 'Accurate and complete documentation is essential for delivering quality patient care, ensuring proper coding, and meeting compliance standards.',
+  },
+  {
+    title: 'Clinical Decision Support',
+    href: ROUTES.cds,
+    icon: solutionIcon('decision-support-2.svg'),
+    text: 'CARE-E delivers intelligent decision-making tools to help clinicians provide better, safer, and more efficient patient care.',
+  },
+  {
+    title: 'Robotic Process Automation (RPA)',
+    href: ROUTES.rpa,
+    icon: solutionIcon('rapid-1.svg'),
+    text: 'CARE-E automates administrative tasks, allowing clinicians to focus more on patient care.',
+  },
+  {
+    title: 'Patient Engagement',
+    href: ROUTES.patientEngagement,
+    icon: solutionIcon('schedule-1.svg'),
+    text: 'CARE-E enhances patient interactions, communication, and adherence to care plans.',
+  },
+  {
+    title: 'CARE-E Analytics',
+    href: ROUTES.analytics,
+    icon: solutionIcon('customization-1.svg'),
+    text: 'CARE-E provides actionable insights through real-time analytics, helping healthcare teams optimize patient care and operations.',
+  },
+  {
+    title: 'Real-World Applications',
+    href: ROUTES.realWorld,
+    icon: solutionIcon('outcomes-1.svg'),
+    text: 'CARE-E’s patient engagement capabilities have transformed healthcare practices across various scenarios.',
+  },
+  {
+    title: 'CARE-E Advantage',
+    href: ROUTES.advantage,
+    icon: solutionIcon('guarantee-1.svg'),
+    text: 'Integrating CARE-E into your patient engagement strategy delivers impactful results.',
+  },
+  {
+    title: 'Security and Compliance',
+    href: ROUTES.security,
+    icon: solutionIcon('regulatory-compliance-1.svg'),
+    text: 'At CARE-E, safeguarding sensitive patient data is not just a priority—it’s a foundation of our EHR-integrated clinical assistant.',
+  },
+];
+---
+
+<SolutionLayout
+  title="Solution"
+  description="CARE-E unifies clinical documentation, decision support, automation, patient engagement and analytics in one EHR-integrated AI assistant."
+>
+  <section>
+    <SectionTitle as="h1" lead="The" highlight="CARE-E Solution" />
+    <p class="mt-6 text-lead font-medium">
+      CARE-E is more than just an AI-powered assistant—it’s a fully integrated, end-to-end solution
+      designed to transform clinical workflows. Unlike fragmented systems that require multiple
+      tools for documentation, automation, and patient engagement, CARE-E seamlessly unifies these
+      capabilities into a single, intelligent platform.
+    </p>
+    <IconCards class="mt-10 lg:mt-[3.125rem]" items={solutions} />
+  </section>
+</SolutionLayout>

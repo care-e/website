@@ -1,0 +1,84 @@
+---
+export interface IconCardItem {
+  title: string;
+  /** Icon URL (see solutionIcon). */
+  icon: string;
+  text?: string;
+  bullets?: string[];
+  /** Makes the whole card a link. */
+  href?: string;
+}
+
+interface Props {
+  items: IconCardItem[];
+  /** "list": two columns, icon beside the title. "center": three columns, icon above. */
+  variant?: 'list' | 'center';
+  class?: string;
+}
+
+const { items, variant = 'list', class: className } = Astro.props;
+---
+
+<ul
+  class:list={[
+    'flex flex-wrap justify-center gap-5 lg:gap-[1.25rem]',
+    variant === 'list'
+      ? '*:w-full md:*:w-[calc(50%-0.625rem)]'
+      : '*:w-full md:*:w-[calc(50%-0.625rem)] lg:*:w-[calc((100%-2.5rem)/3)]',
+    className,
+  ]}
+>
+  {items.map((item) =>
+    variant === 'list' ? (
+      <li
+        class:list={[
+          'border-brand-gradient relative rounded-[0.625rem] px-[1.5625rem] py-[1.875rem]',
+          item.href && 'transition-shadow focus-within:shadow-lg hover:shadow-lg',
+        ]}
+      >
+        <h3 class="flex items-start gap-3 text-title leading-[1.236] font-bold text-brand">
+          <img
+            src={item.icon}
+            alt=""
+            width="30"
+            height="30"
+            loading="lazy"
+            class="mt-[0.35em] size-[1.875rem] shrink-0"
+          />
+          {item.href ? (
+            <a href={item.href} class="after:absolute after:inset-0 hover:underline">
+              {item.title}
+            </a>
+          ) : (
+            <span>{item.title}</span>
+          )}
+        </h3>
+        {item.text && <p class="mt-4 text-lead font-medium">{item.text}</p>}
+        {item.bullets && (
+          <ul class="mt-4 list-disc space-y-1 pl-7 text-lead font-medium">
+            {item.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ) : (
+      <li class="border-brand-gradient flex flex-col items-center rounded-[0.625rem] px-5 py-8 text-center lg:min-h-[27.5rem] lg:py-[1.25rem]">
+        <img
+          src={item.icon}
+          alt=""
+          width="80"
+          height="80"
+          loading="lazy"
+          class="size-16 lg:mt-4 lg:size-[5rem]"
+        />
+        <h3 class="mt-5 text-title leading-[1.236] font-bold text-brand lg:mt-[2rem]">
+          {item.title}
+        </h3>
+        {item.text && (
+          <p class="mt-4 max-w-[29.5625rem] text-lead font-medium lg:mt-6">{item.text}</p>
+        )}
+      </li>
+    ),
+  )}
+</ul>

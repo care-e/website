@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import SubTitle from '../components/solutions/SubTitle.astro';
+import OrgCard from '../components/OrgCard.astro';
+import LogoStrip from '../components/home/LogoStrip.astro';
+import Button from '../components/Button.astro';
+import { ORGANIZATIONS } from '../data/organizations';
+import { FEATURED_SPECIALTIES, OTHER_SPECIALTIES } from '../data/specialties';
+import { ROUTES } from '../consts';
+---
+
+<BaseLayout
+  title="Who We Work With"
+  description="CARE-E supports health systems, payers, ACOs, provider networks, physician practices and specialty care across cardiology, oncology, neurology and more."
+>
+  <div class="bg-wash -mt-20 pt-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem]">
+    <section class="container-page pt-10 pb-14 lg:pt-[6.25rem] lg:pb-[9.375rem]">
+      <SectionTitle as="h1" lead="Who" highlight="We Work With" />
+      <h2 class="mt-8 text-title leading-[1.236] font-bold text-brand lg:mt-[3.125rem]">
+        Healthcare Organizations
+      </h2>
+      <ul class="mt-6 flex flex-wrap justify-center gap-5 *:w-full sm:*:w-[calc(50%-10px)] lg:mt-[3.125rem] lg:*:w-[calc(25%-15px)]">
+        {ORGANIZATIONS.map((org) => (
+          <OrgCard {...org} />
+        ))}
+      </ul>
+    </section>
+
+    <section class="container-page pb-14 lg:pb-[9.375rem]">
+      <SubTitle>Specialty Care Providers</SubTitle>
+      <p class="mt-4 text-lead font-medium">
+        Beyond primary care, we also offer support for specialty practices, encompassing fields such
+        as cardiology, endocrinology, gastroenterology, hematology, nephrology, neurology, oncology,
+        ophthalmology, pain management, pulmonology, rheumatology, and urology, among others.
+      </p>
+      <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:mt-[3.125rem] lg:grid-cols-4 lg:gap-x-[1.25rem] lg:gap-y-[1.25rem]">
+        {FEATURED_SPECIALTIES.map((s) => (
+          <li class="border-brand-gradient flex min-h-[8.1875rem] items-center gap-[0.9375rem] rounded-[0.625rem] px-5 py-[1.4375rem]">
+            <span class="border-brand-gradient flex size-[5.3125rem] shrink-0 items-center justify-center rounded-full">
+              <Image src={s.icon} alt="" width={70} class="size-[2.1875rem]" />
+            </span>
+            <span class="text-[1.5625rem] leading-[1.236] font-semibold text-brand">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-8 text-lead font-medium">
+        <strong class="font-semibold">Also supporting:</strong> {OTHER_SPECIALTIES.join(', ')}, and
+        more.
+      </p>
+    </section>
+
+    <section class="container-page pb-14 lg:pb-[6.25rem]">
+      <SubTitle>Technology Partners</SubTitle>
+      <p class="mt-4 text-lead font-medium">
+        CARE-E Ai seamlessly integrates with electronic health records, digital health platforms,
+        and clinical software as a service (SaaS) to streamline workflows and boost efficiency.
+      </p>
+    </section>
+  </div>
+  <LogoStrip />
+  <div class="bg-wash">
+    <div class="container-page flex justify-center py-14 lg:py-[6.25rem]">
+      <Button href={ROUTES.contact} class="h-[3.75rem]">
+        Request Demo
+      </Button>
+    </div>
+  </div>
+</BaseLayout>

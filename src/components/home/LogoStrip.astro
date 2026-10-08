@@ -1,0 +1,39 @@
+---
+// EHR systems CARE-E integrates with (logos from the previous care-e.ai site).
+import epic from '../../assets/ehr/epic.svg?url';
+import oracle from '../../assets/ehr/oracle.svg?url';
+import athenahealth from '../../assets/ehr/athenahealth.svg?url';
+import meditech from '../../assets/ehr/meditech.svg?url';
+import allscripts from '../../assets/ehr/allscripts.svg?url';
+import nextgen from '../../assets/ehr/nextgen.svg?url';
+
+const logos = [
+  { src: epic, alt: 'Epic', width: 116, height: 45 },
+  { src: oracle, alt: 'Oracle Health', width: 250, height: 64 },
+  { src: athenahealth, alt: 'athenahealth', width: 442, height: 72 },
+  { src: meditech, alt: 'MEDITECH', width: 258, height: 52 },
+  { src: allscripts, alt: 'Allscripts', width: 234, height: 47 },
+  { src: nextgen, alt: 'NextGen Healthcare', width: 136, height: 55 },
+];
+---
+
+<section aria-labelledby="ehr-heading" class="bg-white">
+  <h2 id="ehr-heading" class="sr-only">
+    Integrates with leading EHRs
+  </h2>
+  <ul class="container-page flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-8 lg:h-[7.5rem] lg:flex-nowrap lg:justify-between lg:py-0">
+    {logos.map((logo) => (
+      <li>
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          width={logo.width}
+          height={logo.height}
+          loading="lazy"
+          decoding="async"
+          class="h-8 w-auto lg:h-[2.75rem]"
+        />
+      </li>
+    ))}
+  </ul>
+</section>

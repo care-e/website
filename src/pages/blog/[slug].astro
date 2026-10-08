@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { ROUTES, SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+type Props = { post: CollectionEntry<'blog'> };
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, author, heroImage, heroAlt, categories } = post.data;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(author && { author: { '@type': 'Person', name: author } }),
+  publisher: { '@type': 'Organization', name: SITE_TITLE },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+};
+---
+
+<BaseLayout title={title} description={description} image={heroImage?.src}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  <div class="bg-wash -mt-20 pt-20 pb-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem] lg:pb-[9.375rem]">
+    <article class="container-page max-w-[62.5rem] pt-10 lg:pt-[6.25rem]">
+      <a href={ROUTES.blog} class="font-semibold text-brand hover:underline">
+        ← All articles
+      </a>
+      <h1 class="mt-6 text-display font-semibold">{title}</h1>
+      <p class="mt-4 text-[1.125rem] font-semibold text-ink-muted">
+        <time datetime={pubDate.toISOString()}>
+          {pubDate.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' })}
+        </time>
+        {author && <> · {author}</>}
+      </p>
+      {heroImage && (
+        <Image
+          src={heroImage}
+          alt={heroAlt}
+          width={1000}
+          densities={[1, 2]}
+          class="mt-8 w-full rounded-[1.25rem]"
+          loading="eager"
+        />
+      )}
+      <div class="prose-content mt-10 rounded-[1.25rem] bg-white p-6 lg:p-[3.125rem]">
+        <Content />
+      </div>
+      {categories.length > 0 && (
+        <ul class="mt-8 flex flex-wrap gap-2" aria-label="Topics">
+          {categories.map((c) => (
+            <li class="rounded-full bg-brand-tint px-4 py-1.5 text-base font-semibold text-brand">
+              {c}
+            </li>
+          ))}
+        </ul>
+      )}
+      <div class="mt-12 flex justify-center">
+        <Button href={ROUTES.contact} class="h-[3.75rem]">
+          Request Demo
+        </Button>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

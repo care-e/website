@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { initials, type Person } from '../../data/people';
+
+type Props = Person;
+
+const { id, name, role, photo, bio } = Astro.props;
+// Splits on sentence ends, not after titles or initials ("Dr.", "S.").
+const teaser = bio[0].split(/(?<!\b(?:Dr|St|Mr|Ms|Mrs|[A-Z])\.)(?<=\.)\s+(?=[A-Z])/)[0];
+---
+
+<li class="flex w-full max-w-[20.4375rem] flex-col overflow-hidden rounded-[0.625rem] border-2 border-brand-green bg-white">
+  <!-- The previous site's partner photos are pre-cropped circles. -->
+  <div class="flex h-[13.3125rem] items-center justify-center bg-brand-tint">
+    {photo ? (
+      <Image
+        src={photo}
+        alt={`Portrait of ${name}`}
+        width={176}
+        height={176}
+        densities={[1, 2]}
+        class="size-[11rem] rounded-full object-cover"
+      />
+    ) : (
+      <span
+        class="flex size-[11rem] items-center justify-center rounded-full bg-white text-[3rem] font-bold text-brand"
+        aria-hidden="true"
+      >
+        {initials(name)}
+      </span>
+    )}
+  </div>
+  <div class="flex flex-1 flex-col px-[0.9375rem] pt-3 pb-4">
+    <h3 class="text-button leading-[1.236] font-semibold text-brand">{name}</h3>
+    <p class="mt-2 line-clamp-3 text-[1rem] leading-[1.3] font-medium">{teaser}</p>
+    <button
+      type="button"
+      data-bio={id}
+      class="mt-3 cursor-pointer self-start text-[1rem] font-semibold text-brand underline hover:no-underline"
+    >
+      Read full bio
+    </button>
+  </div>
+  <p class="bg-[#f5f5f5] px-3 py-[1.1875rem] text-center text-[1rem] leading-[1.3] font-medium">
+    {role}
+  </p>
+</li>

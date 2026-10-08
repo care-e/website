@@ -1,0 +1,69 @@
+---
+import SolutionLayout from '../layouts/SolutionLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import UseCase from '../components/solutions/UseCase.astro';
+import chronic from '../assets/solutions/art/uc-chronic.png';
+import preventive from '../assets/solutions/art/uc-preventive.png';
+import postDischarge from '../assets/solutions/art/uc-post-discharge.png';
+import satisfaction from '../assets/solutions/art/uc-satisfaction.png';
+
+// Copy from the previous care-e.ai Real-World Applications page.
+const cases = [
+  {
+    title: 'Chronic Disease Management (Coming Soon)',
+    challenge: 'Keeping patients with chronic conditions engaged in their care plans.',
+    solution:
+      'CARE-E automates reminders for medication, routine check-ups, and lifestyle assessments, ensuring adherence to care plans.',
+    outcome: 'Improved patient compliance and better long-term health outcomes.',
+    image: chronic,
+    imageAlt: 'Doctor reviewing a patient’s chronic condition dashboard',
+  },
+  {
+    title: 'Preventive Care Campaigns',
+    challenge: 'Encouraging patients to participate in preventive screenings and vaccinations.',
+    solution:
+      'CARE-E delivers personalized communication campaigns via preferred channels, promoting awareness and scheduling services efficiently.',
+    outcome: 'Increased patient participation and earlier detection of potential health issues.',
+    image: preventive,
+    imageAlt: 'Clinicians presenting a vaccination and prevention campaign',
+  },
+  {
+    title: 'Post-Discharge Follow-Up',
+    challenge: 'Reducing hospital readmissions by ensuring proper follow-up care.',
+    solution:
+      'CARE-E sends automated follow-up instructions, monitors patient recovery progress, and schedules post-discharge appointments.',
+    outcome: 'Reduced readmission rates and enhanced patient satisfaction.',
+    image: postDischarge,
+    imageAlt: 'Doctor on a video call with a recovering patient at home',
+  },
+  {
+    title: 'Patient Satisfaction and Quality Metrics',
+    challenge:
+      'Optimizing the collection of surveys and assessments beyond scheduled appointments to enhance compliance with the Medicare Access and CHIP Reauthorization Act (MACRA) and the Merit-based Incentive Payment System (MIPS), maximizing reimbursement and care quality.',
+    solution:
+      'CARE-E automates outreach across the most accessible communication channel for the patient.',
+    outcome:
+      'Providing a greater chance of data capture without the need for phone calls or subsequent visits, increasing quality metrics and ultimately additional revenue for providers.',
+    image: satisfaction,
+    imageAlt: 'Care team reviewing patient survey results',
+  },
+];
+---
+
+<SolutionLayout
+  title="Real-World Applications"
+  description="See how CARE-E patient engagement supports chronic disease management, preventive care campaigns, post-discharge follow-up and MACRA/MIPS quality metrics."
+>
+  <section>
+    <SectionTitle as="h1" lead="Real-World" highlight="Applications and Use Cases" />
+    <p class="mt-6 text-lead font-medium">
+      CARE-E’s patient engagement capabilities have transformed healthcare practices across various
+      scenarios:
+    </p>
+    <div class="mt-10 space-y-14 lg:mt-[3.125rem] lg:space-y-[3.125rem]">
+      {cases.map((c, i) => (
+        <UseCase {...c} reverse={i % 2 === 1} />
+      ))}
+    </div>
+  </section>
+</SolutionLayout>

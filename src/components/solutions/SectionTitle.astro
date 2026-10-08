@@ -1,0 +1,17 @@
+---
+interface Props {
+  /** Black lead-in text before the blue highlight. */
+  lead?: string;
+  highlight?: string;
+  as?: 'h1' | 'h2';
+  class?: string;
+}
+
+const { lead, highlight, as: Tag = 'h2', class: className } = Astro.props;
+---
+
+<Tag class:list={['text-display font-semibold', className]}>
+  {lead}
+  {lead && highlight && ' '}
+  {highlight && <span class="text-brand">{highlight}</span>}
+</Tag>

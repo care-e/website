@@ -1,0 +1,114 @@
+---
+import SolutionLayout from '../layouts/SolutionLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import SubTitle from '../components/solutions/SubTitle.astro';
+import MediaSplit from '../components/solutions/MediaSplit.astro';
+import IconCards from '../components/solutions/IconCards.astro';
+import { solutionIcon } from '../data/solution-nav';
+import intro from '../assets/solutions/art/analytics-intro.png';
+import potential from '../assets/solutions/art/analytics-potential.png';
+
+// Copy from the previous care-e.ai CARE-E Analytics page.
+const capabilities = [
+  {
+    title: 'Clear Patient Insights',
+    icon: solutionIcon('injury-1.svg'),
+    text: 'Instantly access a patient’s history, treatment plans, and personalized recommendations to guide care.',
+  },
+  {
+    title: 'Population Health Management',
+    icon: solutionIcon('medical-symbol-1.svg'),
+    text: 'Identify trends and risk factors to catch potential issues early and improve patient outcomes.',
+  },
+  {
+    title: 'Predictive Intelligence',
+    icon: solutionIcon('injury-1.svg'),
+    text: 'Use AI-driven models to detect complications before they happen and optimize resource use.',
+  },
+  {
+    title: 'Custom Dashboards',
+    icon: solutionIcon('customization-1.svg'),
+    text: 'Track key performance metrics, patient satisfaction, and quality indicators in one place.',
+  },
+  {
+    title: 'Simplified Reporting',
+    icon: solutionIcon('report-1.svg'),
+    text: 'Generate audit-ready, compliance-driven reports with minimal effort.',
+  },
+];
+
+const value = [
+  {
+    title: 'Improved Clinical Outcomes',
+    icon: solutionIcon('outcomes-1.svg'),
+    text: 'Data-driven insights support better decision-making and patient care.',
+  },
+  {
+    title: 'Smarter Population Health Management',
+    icon: solutionIcon('communication-1-1.svg'),
+    text: 'Proactive strategies help address community health needs effectively.',
+  },
+  {
+    title: 'Greater Operational Efficiency',
+    icon: solutionIcon('efficacy-1.svg'),
+    text: 'Automated analysis and reporting reduce administrative workload.',
+  },
+  {
+    title: 'Simplified Regulatory Compliance',
+    icon: solutionIcon('regulatory-2.svg'),
+    text: 'Ensures seamless adherence to reporting requirements and quality benchmarks.',
+  },
+];
+---
+
+<SolutionLayout
+  title="CARE-E Analytics"
+  description="CARE-E Analytics turns EHR data into real-time insights: patient-level summaries, population health trends, predictive intelligence, custom dashboards and simplified reporting."
+>
+  <section class="space-y-12 lg:space-y-[3.75rem]">
+    <MediaSplit
+      image={intro}
+      imageAlt="Clinicians reviewing analytics charts on a large screen"
+      imageWidth={536}
+    >
+      <SectionTitle as="h1" lead="Actionable insights with" highlight="CARE-E Analytics" />
+      <p class="mt-6 text-lead font-medium">
+        In today’s data-driven healthcare environment, accessing meaningful analytics is essential
+        for delivering high-quality, patient-centered care. CARE-E’s analytics, insights, and
+        reporting tools empower clinicians, care teams, and healthcare organizations.
+      </p>
+    </MediaSplit>
+    <MediaSplit
+      image={potential}
+      imageAlt="Secure shield protecting connected healthcare data"
+      imageWidth={537}
+      reverse
+    >
+      <SubTitle>Unlock the Potential of Healthcare Data</SubTitle>
+      <p class="mt-4 text-lead font-medium">
+        CARE-E’s analytics engine integrates seamlessly with EHR systems to process complex clinical
+        data, transforming it into clear, accessible insights. From a comprehensive understanding of
+        a single patient’s medical history to trend analyses across diverse populations, CARE-E
+        provides the tools to improve decision-making and healthcare delivery.
+      </p>
+    </MediaSplit>
+  </section>
+
+  <section>
+    <SectionTitle lead="Core Capabilities of" highlight="CARE-E Analytics" />
+    <p class="mt-6 text-lead font-medium">
+      CARE-E delivers real-time, actionable data, so you can make faster, more informed decisions on
+      patient care.
+    </p>
+    <IconCards class="mt-10" items={capabilities} />
+  </section>
+
+  <section>
+    <SectionTitle lead="How CARE-E’s Analytics Platform" highlight="Delivers Value" />
+    <IconCards class="mt-10" items={value} />
+    <p class="mt-10 text-lead font-medium">
+      CARE-E’s analytics empower healthcare teams with real-time, actionable data to drive better
+      care and operational success.
+    </p>
+  </section>
+</SolutionLayout>

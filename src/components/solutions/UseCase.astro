@@ -1,0 +1,33 @@
+---
+import type { ImageMetadata } from 'astro';
+import MediaSplit from './MediaSplit.astro';
+import SubTitle from './SubTitle.astro';
+
+interface Props {
+  title: string;
+  challenge: string;
+  solution: string;
+  outcome: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  reverse?: boolean;
+}
+
+const { title, challenge, solution, outcome, image, imageAlt, reverse } = Astro.props;
+const rows = [
+  ['Challenge', challenge],
+  ['Solution', solution],
+  ['Outcome', outcome],
+];
+---
+
+<MediaSplit image={image} imageAlt={imageAlt} imageWidth={450} reverse={reverse}>
+  <SubTitle>{title}</SubTitle>
+  <ul class="mt-4 list-disc space-y-1 pl-9 text-lead font-medium lg:max-w-[49.375rem]">
+    {rows.map(([label, text]) => (
+      <li>
+        <strong class="font-semibold">{label}:</strong> {text}
+      </li>
+    ))}
+  </ul>
+</MediaSplit>

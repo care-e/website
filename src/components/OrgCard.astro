@@ -1,0 +1,22 @@
+---
+import type { Organization } from '../data/organizations';
+
+type Props = Organization;
+
+const { label, icon } = Astro.props;
+---
+
+<li class="border-brand-gradient flex min-h-[8.1875rem] items-center gap-[0.9375rem] rounded-[0.625rem] px-5 py-[1.4375rem]">
+  <img
+    src={icon}
+    alt=""
+    width="85"
+    height="85"
+    loading="lazy"
+    decoding="async"
+    class="size-[5.3125rem] shrink-0"
+  />
+  <span class="text-[clamp(1rem,0.92rem+0.25vw,1.25rem)] leading-[1.236] font-semibold text-brand">
+    {label}
+  </span>
+</li>

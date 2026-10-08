@@ -1,0 +1,29 @@
+---
+import { SOLUTION_NAV } from '../../data/solution-nav';
+
+const path = Astro.url.pathname;
+---
+
+<nav aria-label="Solutions" class="container-page pt-6 lg:pt-[3.4375rem]">
+  <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-4 lg:grid-cols-8 lg:gap-[0.625rem]">
+    {SOLUTION_NAV.map((item) => {
+      const active = path.startsWith(item.href);
+      return (
+        <li>
+          <a
+            href={item.href}
+            aria-current={active ? 'page' : undefined}
+            class:list={[
+              'flex h-full min-h-14 items-center justify-center rounded-[0.625rem] px-3 py-2 text-center text-[clamp(0.875rem,0.8rem+0.2vw,1.25rem)] leading-[1.236] font-semibold transition-colors lg:min-h-[4.375rem]',
+              active
+                ? 'border-2 border-brand-green bg-brand text-white'
+                : 'border-brand-gradient text-brand hover:bg-brand-tint',
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>

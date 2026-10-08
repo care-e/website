@@ -1,0 +1,27 @@
+---
+import Button from '../Button.astro';
+import { ROUTES } from '../../consts';
+---
+
+<section class="container-page py-14 lg:py-[4.6875rem]">
+  <h2 class="text-display font-semibold">
+    What Makes <span class="text-brand">CARE-E Unique?</span>
+  </h2>
+  <div class="mt-4 space-y-4 text-lead leading-[1.69] font-medium lg:mt-5">
+    <p>
+      CARE-E is more than just an AI-powered assistant—it’s a fully integrated, end-to-end solution
+      designed to transform clinical workflows. Unlike fragmented systems that require multiple
+      tools for documentation, automation, and patient engagement, CARE-E seamlessly unifies these
+      capabilities into a single, intelligent platform.
+    </p>
+    <p>
+      By automating repetitive tasks, optimizing documentation, and delivering real-time insights,
+      CARE-E reduces administrative burden, improves efficiency, and enhances patient care—all while
+      lowering costs. The ability to work within existing EHRs without disruption makes CARE-E a
+      scalable, adaptable solution that truly supports clinicians at every stage of care.
+    </p>
+  </div>
+  <Button href={ROUTES.contact} class="mt-8 h-[3.75rem]">
+    Request Demo
+  </Button>
+</section>

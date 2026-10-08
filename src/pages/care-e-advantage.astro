@@ -1,0 +1,48 @@
+---
+import SolutionLayout from '../layouts/SolutionLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import IconCards from '../components/solutions/IconCards.astro';
+import { solutionIcon } from '../data/solution-nav';
+
+// Copy from the previous care-e.ai CARE-E Advantage page. That page repeated the
+// "Streamlined Workflows" text under "Data-Driven Decisions"; the Figma copy is used there instead.
+const advantages = [
+  {
+    title: 'Improved Patient Satisfaction',
+    icon: solutionIcon('guarantee-1.svg'),
+    text: 'Personalized, timely communication strengthens the provider-patient relationship.',
+  },
+  {
+    title: 'Streamlined Workflows',
+    icon: solutionIcon('streamlined-1.svg'),
+    text: 'Automation frees up clinicians and staff, allowing them to focus on delivering quality care.',
+  },
+  {
+    title: 'Higher Adherence Rates',
+    icon: solutionIcon('adherence-1-1.svg'),
+    text: 'Engaged patients are more likely to follow treatment plans and attend scheduled appointments.',
+  },
+  {
+    title: 'Data-Driven Decisions',
+    icon: solutionIcon('data-analysis-1.svg'),
+    text: 'Real-time analytics provide actionable insights for proactive care management.',
+  },
+];
+---
+
+<SolutionLayout
+  title="CARE-E Advantage"
+  description="Integrating CARE-E into your patient engagement strategy improves satisfaction, streamlines workflows, raises adherence and enables data-driven decisions."
+>
+  <section>
+    <SectionTitle as="h1" lead="The CARE-E" highlight="Advantage" />
+    <p class="mt-6 text-lead font-medium">
+      Integrating CARE-E into your patient engagement strategy delivers impactful results:
+    </p>
+    <IconCards class="mt-10" items={advantages} />
+    <p class="mt-10 text-lead font-medium">
+      CARE-E empowers healthcare teams with intelligent automation, creating a more connected,
+      efficient, and patient-centered experience.
+    </p>
+  </section>
+</SolutionLayout>

@@ -1,0 +1,99 @@
+---
+import FeatureRow from '../FeatureRow.astro';
+import efficiency from '../../assets/home/why-efficiency.jpg';
+import insights from '../../assets/home/why-insights.png';
+import coding from '../../assets/home/why-coding.png';
+import workflows from '../../assets/home/why-workflows.jpg';
+import integration from '../../assets/home/why-integration.jpg';
+---
+
+<section class="container-page py-14 lg:py-[4.6875rem]">
+  <h2 class="text-display font-semibold">
+    Why choose <span class="text-brand">CARE-E</span>
+  </h2>
+
+  <div class="mt-10 space-y-16 lg:mt-20 lg:space-y-[4.375rem]">
+    <FeatureRow
+      title="Increase Efficiency and Accuracy"
+      image={efficiency}
+      imageAlt="CARE-E encounter screen with condition, ICD codes and notes"
+    >
+      <p>
+        CARE-E automates clinical documentation and administrative tasks, reducing clinician
+        workload and freeing up time for more meaningful patient interactions. It also decreases
+        after-hours “pajama time” spent on documentation. With advanced NLP and machine learning,
+        CARE-E ensures high-quality documentation and accurate data capture, reducing billing errors
+        and enhancing care delivery.
+      </p>
+    </FeatureRow>
+
+    <FeatureRow
+      title="Enhance Insights"
+      image={insights}
+      imageAlt="Two people chatting on a phone asking “Who is CareE Health?”"
+      imageKind="illustration"
+      imageWidth={508}
+      reverse
+    >
+      <p>
+        CARE-E offers a chat-like experience, enabling clinicians to quickly ask the platform
+        patient-related questions, access chart insights, and identify gaps in care—supporting
+        faster, more informed decision-making.
+      </p>
+    </FeatureRow>
+
+    <FeatureRow
+      title="Streamline Coding"
+      image={coding}
+      imageAlt="A person on a laptop reviewing CPT, ICD-9, ICD-10, DRG and HCPCS codes"
+      imageKind="illustration"
+      imageWidth={566}
+    >
+      <p>
+        CARE-E automates medical coding, billing, and preventative care assessments to capture
+        missed revenue, reduce documentation errors, and lighten administrative burdens. CARE-E
+        provides:
+      </p>
+      <ul class="list-disc pl-6 marker:text-xs">
+        <li>
+          <strong class="font-semibold">Billing &amp; Coding Automation</strong> – saves time and
+          simplifies workflows.
+        </li>
+        <li>
+          <strong class="font-semibold">More Accurate Documentation</strong> – supports higher
+          reimbursement rates.
+        </li>
+        <li>
+          <strong class="font-semibold">Less Time on Admin Tasks</strong> – reduces time spent on
+          charting and paperwork.
+        </li>
+      </ul>
+    </FeatureRow>
+
+    <FeatureRow
+      title="Enhanced Clinical Workflows"
+      image={workflows}
+      imageAlt="CARE-E encounter visit note with a body diagram for symptoms"
+      reverse
+    >
+      <p>
+        CARE-E simplifies and streamlines every stage of the patient encounter—before, during, and
+        after—by providing a problem-focused medical chart and automating clinical notes with up to
+        date past medical history (PMH), past surgical history (PSH), history of present illness
+        (HPI), orders, treatment plans, and patient summaries for efficient, optimized workflows.
+      </p>
+    </FeatureRow>
+
+    <FeatureRow
+      title="Scalable Integration"
+      image={integration}
+      imageAlt="CARE-E sign-up panel over an EHR dashboard"
+    >
+      <p>
+        CARE-E seamlessly integrates with existing EHRs, enhancing workflows without disrupting
+        current systems. This flexible, scalable solution works within existing infrastructure—no
+        need for a complete EHR overhaul.
+      </p>
+    </FeatureRow>
+  </div>
+</section>

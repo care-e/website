@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TeamCard from '../components/about/TeamCard.astro';
+import PartnerCard from '../components/about/PartnerCard.astro';
+import BioDialog from '../components/BioDialog.astro';
+import BioDialogScript from '../components/BioDialogScript.astro';
+import missionImage from '../assets/about/mission-lab.png';
+import whoWeAreIcon from '../assets/about/who-we-are.svg?url';
+import visionIcon from '../assets/about/vision.svg?url';
+import valuesIcon from '../assets/about/values.png';
+import { LEADERSHIP, PARTNERS } from '../data/people';
+
+// Copy from the previous care-e.ai About Us page.
+const pillars = [
+  {
+    title: 'Who We Are',
+    icon: whoWeAreIcon,
+    text: 'We are a team of innovators, data scientists, and healthcare experts dedicated to enhancing healthcare delivery through AI-driven solutions.',
+  },
+  {
+    title: 'Our Vision',
+    icon: visionIcon,
+    text: 'To make AI accessible and beneficial for every healthcare provider, ensuring smarter workflows and better patient experiences.',
+  },
+  {
+    title: 'Our Values',
+    icon: valuesIcon.src,
+    text: 'Innovation, Collaboration, and Patient-Centricity.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Us"
+  description="CARE-E Ai empowers healthcare providers with intelligent tools that reduce administrative burden, so clinicians can focus on quality patient care. Meet our team and partners."
+>
+  <div class="bg-wash -mt-20 pt-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem]">
+    <section class="container-page pt-10 pb-14 lg:pt-[6.25rem] lg:pb-[9.375rem]">
+      <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,61.4375rem)_minmax(0,1fr)] lg:gap-[6.5rem]">
+        <div>
+          <h1 class="text-display font-bold">
+            Our Mission: <span class="block text-brand">Re-humanize Healthcare</span>
+          </h1>
+          <p class="mt-4 text-lead font-medium text-ink-soft lg:mt-[1.5rem]">
+            At CARE-E Ai, we empower healthcare providers with intelligent tools designed to improve
+            outcomes and efficiency. By reducing administrative burdens, we help clinicians focus on
+            what matters most—delivering quality patient care.
+          </p>
+        </div>
+        <Image
+          src={missionImage}
+          alt="Clinicians and researchers working with data dashboards in a modern lab"
+          width={565}
+          densities={[1, 2]}
+          class="mx-auto h-auto w-full max-w-[35.3125rem]"
+          loading="eager"
+        />
+      </div>
+
+      <ul class="mt-12 grid gap-5 md:grid-cols-3 lg:mt-[3rem] lg:gap-[1.3125rem]">
+        {pillars.map((p) => (
+          <li class="rounded-[1.25rem] border-2 border-brand-green bg-white px-[1.5625rem] py-[1.875rem]">
+            <h2 class="flex items-center gap-2.5 text-[1.5625rem] leading-[1.014] font-semibold text-brand">
+              <img src={p.icon} alt="" width="30" height="30" class="size-[1.875rem]" />
+              {p.title}
+            </h2>
+            <p class="mt-4 text-button leading-[1.5] font-medium">{p.text}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section
+      id="leadership"
+      class="container-page scroll-mt-28 pb-14 lg:scroll-mt-40 lg:pb-[9.375rem]"
+    >
+      <h2 class="text-display font-bold text-brand">Meet The Team</h2>
+      <div class="mt-6 rounded-[1.25rem] bg-white px-5 py-10 lg:mt-[3.125rem] lg:px-[4.25rem] lg:py-[3.625rem]">
+        <p class="mx-auto max-w-[59.25rem] text-center text-title leading-[1.5] font-bold text-brand">
+          Dedicated to simplifying clinical documentation and reducing administrative burden for
+          healthcare providers.
+        </p>
+        <ul class="mt-10 flex flex-wrap justify-center gap-9 lg:mt-[3.875rem]">
+          {LEADERSHIP.map((person) => (
+            <TeamCard {...person} />
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section
+      id="partners"
+      class="container-page scroll-mt-28 pb-20 lg:scroll-mt-40 lg:pb-[9.375rem]"
+    >
+      <h2 class="text-display font-bold">
+        Our <span class="text-brand">Partners in Innovation</span>
+      </h2>
+      <div class="mt-6 rounded-[1.25rem] bg-white px-5 py-10 lg:mt-[3.125rem] lg:px-[5.3125rem] lg:py-[3.625rem]">
+        <ul class="flex flex-wrap justify-center gap-9 lg:gap-[3.4375rem]">
+          {PARTNERS.map((person) => (
+            <PartnerCard {...person} />
+          ))}
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  {[...LEADERSHIP, ...PARTNERS].map((person) => (
+    <BioDialog {...person} />
+  ))}
+  <BioDialogScript />
+</BaseLayout>

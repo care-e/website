@@ -1,0 +1,58 @@
+---
+import SolutionLayout from '../layouts/SolutionLayout.astro';
+import SectionTitle from '../components/solutions/SectionTitle.astro';
+import SubTitle from '../components/solutions/SubTitle.astro';
+import MediaSplit from '../components/solutions/MediaSplit.astro';
+import securityImage from '../assets/solutions/art/security.png';
+
+// Copy from the previous care-e.ai Security and Compliance page. The Figma draft's
+// "SOC 2 Type II and HITRUST CSF Certification" block is intentionally omitted: the live
+// site never claimed those certifications.
+const sections = [
+  {
+    title: 'HIPAA-Compliant Data Protection',
+    text: 'We adhere rigorously to the Health Insurance Portability and Accountability Act (HIPAA), implementing robust physical, network, and process security measures to protect protected health information (PHI). CARE-E’s comprehensive compliance framework ensures your data remains secure, confidential, and accessible only to authorized users.',
+  },
+  {
+    title: 'A Seamless and Secure Integration',
+    text: 'CARE-E is built to integrate non-intrusively with your existing EHR systems. Our advanced middleware maintains the highest levels of data integrity and security. Whether managing PHI, automating workflows, or analyzing insights, CARE-E guarantees compliance without compromise.',
+  },
+  {
+    title: 'Peace of Mind with CARE-E',
+    text: 'Partner with CARE-E to unlock the potential of AI-driven clinical decision support and workflow automation, backed by a robust foundation of security and compliance. From data protection to operational integrity, CARE-E empowers healthcare providers to innovate confidently in a secure environment.',
+  },
+];
+---
+
+<SolutionLayout
+  title="Security and Compliance"
+  description="CARE-E protects patient data with HIPAA-compliant safeguards and integrates securely with existing EHR systems—security and compliance without compromise."
+>
+  <section>
+    <MediaSplit
+      image={securityImage}
+      imageAlt="Care team standing in front of a security shield"
+      imageWidth={373}
+    >
+      <SectionTitle
+        as="h1"
+        lead="Security and Compliance:"
+        highlight="A Trusted Partner in Healthcare"
+      />
+      <p class="mt-6 text-lead font-medium">
+        At CARE-E, safeguarding sensitive patient data is not just a priority—it’s a foundation of
+        our EHR-integrated clinical assistant. Our platform is meticulously designed to meet and
+        exceed industry standards for security and compliance, ensuring healthcare organizations can
+        focus on delivering exceptional care with peace of mind.
+      </p>
+    </MediaSplit>
+    <div class="mt-12 space-y-10 lg:mt-[5rem] lg:space-y-[3.125rem]">
+      {sections.map((s) => (
+        <div>
+          <SubTitle>{s.title}</SubTitle>
+          <p class="mt-4 text-lead font-medium">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</SolutionLayout>

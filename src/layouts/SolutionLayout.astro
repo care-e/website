@@ -1,0 +1,31 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import SolutionsNav from '../components/solutions/SolutionsNav.astro';
+import Button from '../components/Button.astro';
+import { ROUTES } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Hide the closing "Request Demo" call to action (for pages that place it inline). */
+  hideCta?: boolean;
+}
+
+const { title, description, hideCta = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="bg-wash -mt-20 pt-20 pb-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem] lg:pb-[9.375rem]">
+    <SolutionsNav />
+    <div class="container-page mt-10 space-y-16 lg:mt-[3.125rem] lg:space-y-[9.375rem]">
+      <slot />
+    </div>
+    {!hideCta && (
+      <div class="container-page mt-12 flex justify-center lg:mt-[4.6875rem]">
+        <Button href={ROUTES.contact} class="h-[3.75rem]">
+          Request Demo
+        </Button>
+      </div>
+    )}
+  </div>
+</BaseLayout>
