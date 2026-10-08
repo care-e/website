@@ -4,6 +4,9 @@ export const SITE_DESCRIPTION =
   'CARE-E writes the clinical note during the visit. You review and sign, and the chart is closed before you leave the room. AI documentation for independent practices.';
 export const SITE_LOCALE = 'en';
 
+// Contact form endpoint (Formspree form "care-e.ai contact" on Bryan's account; sends to the contact@care-e.ai Google Group = Bryan + Matt).
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mbgdoakj';
+
 export const CONTACT_EMAILS = ['sales@care-e.ai', 'info@care-e.ai'];
 
 export const SOCIAL_LINKS = {
