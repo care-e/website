@@ -1,5 +1,6 @@
 ---
-// EHR systems CARE-E integrates with (logos from the previous care-e.ai site).
+// EHR logos from the previous care-e.ai site. Wording stays "built to work alongside" until
+// write-back is confirmed per EHR.
 import epic from '../../assets/ehr/epic.svg?url';
 import oracle from '../../assets/ehr/oracle.svg?url';
 import athenahealth from '../../assets/ehr/athenahealth.svg?url';
@@ -18,10 +19,13 @@ const logos = [
 ---
 
 <section aria-labelledby="ehr-heading" class="bg-white">
-  <h2 id="ehr-heading" class="sr-only">
-    Integrates with leading EHRs
+  <h2
+    id="ehr-heading"
+    class="container-page pt-8 text-center text-button font-semibold text-ink-muted lg:pt-10"
+  >
+    Built to work alongside the EHR you already use
   </h2>
-  <ul class="container-page flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-8 lg:h-[7.5rem] lg:flex-nowrap lg:justify-between lg:py-0">
+  <ul class="container-page flex flex-wrap items-center justify-center gap-x-10 gap-y-6 py-8 lg:flex-nowrap lg:justify-between lg:pt-6 lg:pb-10">
     {logos.map((logo) => (
       <li>
         <img

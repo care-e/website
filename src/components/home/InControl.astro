@@ -1,0 +1,67 @@
+---
+import shield from '../../assets/home/built-for-healthcare.svg?url';
+import { ROUTES } from '../../consts';
+
+const control = [
+  'Nothing reaches the chart until you sign.',
+  'The transcript sits next to the note, so you can check where every line came from.',
+  'Edit any section before you approve it.',
+];
+
+const security = [
+  'HIPAA-compliant, with physical, network and process safeguards for PHI.',
+  'A Business Associate Agreement (BAA) with every practice.',
+];
+---
+
+<section class="bg-white py-14 lg:py-[6rem]">
+  <div class="container-page grid gap-12 lg:grid-cols-2 lg:gap-20">
+    <div>
+      <h2 class="text-display font-semibold">
+        You stay <span class="text-brand">in control.</span>
+      </h2>
+      <p class="mt-4 text-lead font-medium text-ink-soft/80">
+        CARE-E drafts. You decide. AI assists; you authenticate.
+      </p>
+      <ul class="mt-6 space-y-4">
+        {control.map((line) => (
+          <li class="flex gap-4 text-lead font-medium">
+            <span
+              class="mt-1.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-green text-sm text-white"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+            {line}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="border-brand-gradient rounded-[1.25rem] p-6 lg:p-10">
+      <div class="flex items-start gap-6">
+        <img
+          src={shield}
+          alt=""
+          width="339"
+          height="398"
+          loading="lazy"
+          decoding="async"
+          class="h-auto w-16 shrink-0 lg:w-20"
+        />
+        <h2 class="text-title leading-[1.236] font-bold">Built for patient data</h2>
+      </div>
+      <ul class="mt-6 space-y-3 text-lead font-medium">
+        {security.map((line) => (
+          <li>{line}</li>
+        ))}
+      </ul>
+      <a
+        href={ROUTES.security}
+        class="mt-6 inline-block text-button font-semibold text-brand underline-offset-4 hover:underline"
+      >
+        Security and compliance →
+      </a>
+    </div>
+  </div>
+</section>

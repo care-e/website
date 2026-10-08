@@ -1,0 +1,47 @@
+---
+// What the clinician gets back after a visit. Keep claims to what the product does today.
+const items = [
+  {
+    title: 'SOAP note',
+    body: 'Subjective, objective, assessment and plan, structured from the conversation.',
+  },
+  {
+    title: 'History in context',
+    body: 'HPI, past medical and past surgical history drawn together, so you aren’t hunting through the chart.',
+  },
+  {
+    title: 'Orders and referrals',
+    body: 'Captured from the visit for your review. Nothing is placed on your behalf.',
+  },
+  {
+    title: 'Patient summary',
+    body: 'A plain-language summary of the visit, ready to share with the patient.',
+  },
+  {
+    title: 'Coding suggestions',
+    body: 'ICD-10 and CPT suggestions you can accept or change. CARE-E never bills.',
+  },
+];
+---
+
+<section class="bg-wash py-14 lg:py-[6rem]">
+  <div class="container-page grid gap-10 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
+    <div>
+      <p class="text-button font-semibold tracking-wide text-brand-green uppercase">What you get</p>
+      <h2 class="mt-3 text-display font-semibold">
+        More than a <span class="text-brand">transcript.</span>
+      </h2>
+      <p class="mt-4 text-lead font-medium text-ink-soft/80">
+        Every visit comes back as a draft you can sign, not a wall of text to clean up.
+      </p>
+    </div>
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {items.map((item) => (
+        <li class="rounded-[1rem] bg-white p-6 shadow-sm lg:p-7">
+          <h3 class="text-tab leading-[1.236] font-semibold text-brand">{item.title}</h3>
+          <p class="mt-2 text-lead font-medium">{item.body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

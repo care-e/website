@@ -1,7 +1,7 @@
 // Site-wide metadata. Import from here instead of hard-coding strings in pages.
 export const SITE_TITLE = 'CARE-E Ai';
 export const SITE_DESCRIPTION =
-  'AI-Powered, EHR-Integrated Solutions for Smarter Clinical Workflows.';
+  'CARE-E writes the clinical note during the visit. You review and sign, and the chart is closed before you leave the room. AI documentation for independent practices.';
 export const SITE_LOCALE = 'en';
 
 export const CONTACT_EMAILS = ['sales@care-e.ai', 'info@care-e.ai'];
