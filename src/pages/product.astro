@@ -5,8 +5,9 @@ import Button from '../components/Button.astro';
 import ConsentCard from '../components/product/ConsentCard.astro';
 import WalkthroughGate from '../components/product/WalkthroughGate.astro';
 import ContactSection from '../components/ContactSection.astro';
-import noteBuilds from '../assets/home/steps/note-builds.jpg';
-import reviewSign from '../assets/home/steps/review-sign.jpg';
+// Real captures from a test visit (sample patient, played-back conversation), cropped tight.
+import noteBuilds from '../assets/product/note-builds.jpg';
+import reviewCheck from '../assets/product/review-check.jpg';
 
 // Public teaser: three moments of a visit, outcome first. The full workflow lives in the gated
 // walkthrough and the live demo (cave decision "What stays demo-only").
@@ -64,7 +65,7 @@ const afterBooking = [
           <p class="mt-3 text-lead font-semibold text-brand">For you: no typing during the visit, no dictating after it.</p>
         </div>
         <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-[#f4f8fc] lg:order-1">
-          <Image src={noteBuilds} alt="A note drafting during the visit (sample patient)" widths={[480, 960]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
+          <Image src={noteBuilds} alt="CARE-E’s summary of the visit beside the live transcript (sample patient)" widths={[480, 806]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
         </div>
       </li>
       <li class="grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
@@ -72,12 +73,12 @@ const afterBooking = [
           <p class="flex size-10 items-center justify-center rounded-full bg-brand-tint text-button font-bold text-brand">3</p>
           <h2 class="mt-4 text-title leading-[1.236] font-semibold">You approve it.</h2>
           <p class="mt-3 text-lead font-medium text-ink-soft/80">
-            Read it, change anything, then approve. Nothing is final until you do.
+            Read it and change anything. CARE-E won’t move on until you confirm you’ve reviewed what it wrote, and nothing reaches the chart until you approve it.
           </p>
           <p class="mt-3 text-lead font-semibold text-brand">For you: the chart is closed before you leave the room.</p>
         </div>
         <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-[#f4f8fc]">
-          <Image src={reviewSign} alt="The clinician reviewing the note before approving it (sample patient)" widths={[480, 960]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
+          <Image src={reviewCheck} alt="CARE-E asking the clinician to confirm they reviewed the AI-written sections before moving on" widths={[480, 806]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
         </div>
       </li>
     </ol>

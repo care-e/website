@@ -6,11 +6,13 @@ interface Props {
 
 const { class: className } = Astro.props;
 
+// Follows the real log of a test visit (consent → assistant → vitals saved → approved → summary sent).
 const rows = [
-  { time: '9:02 AM', action: 'Patient consent recorded (verbal)' },
-  { time: '9:03 AM', action: 'Visit started' },
-  { time: '9:14 AM', action: 'Asked the assistant a question' },
-  { time: '9:21 AM', action: 'Note approved by the clinician' },
+  { time: '9:02 AM', action: 'Visit started: patient consented to recording (verbal)' },
+  { time: '9:06 AM', action: 'Asked the assistant a question' },
+  { time: '9:08 AM', action: 'Saved vitals: blood pressure, SpO₂, heart rate' },
+  { time: '9:10 AM', action: 'Clinician approved the visit' },
+  { time: '9:10 AM', action: 'Emailed the visit summary to the patient' },
 ];
 ---
 
