@@ -1,79 +1,57 @@
 ---
 import { Image } from 'astro:assets';
-import MailIcon from '../../assets/icons/mail.svg';
-import poster from '../../assets/home/hero-demo-poster.png';
+import poster from '../../assets/home/hero-poster.jpg';
 import Button from '../Button.astro';
-import { ROUTES } from '../../consts';
 import { withBase } from '../../lib/url';
 ---
 
-<section class="container-page grid items-center gap-10 pt-10 pb-14 lg:grid-cols-[minmax(0,46.625rem)_minmax(0,1fr)] lg:gap-11 lg:pt-[8.0625rem] lg:pb-[5.875rem]">
+<section class="container-page grid items-center gap-10 pt-10 pb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:pt-[6rem] lg:pb-[5.5rem]">
   <div>
-    <h1 class="text-display font-semibold text-ink">
-      Revolutionize <span class="text-brand">Healthcare Efficiency with CARE-E</span>
+    <p class="text-button font-semibold tracking-wide text-brand-green uppercase">
+      AI clinical documentation for independent practices
+    </p>
+    <h1 class="mt-4 text-display font-bold text-ink">
+      See patients. <span class="block text-brand">Not paperwork.</span>
     </h1>
-    <p class="mt-4 max-w-[45.4375rem] text-lead font-medium text-ink-soft">
-      AI-Powered, EHR-Integrated Solutions for Smarter Clinical Workflows.
+    <p class="mt-5 max-w-[40rem] text-lead font-medium text-ink-soft">
+      CARE-E listens during the visit and drafts the note as you go. You review it, sign it, and the
+      chart is closed before you leave the room.
     </p>
-    <Button href={ROUTES.contact} class="mt-8 h-[3.75rem] lg:mt-[3.125rem]">
-      Request Demo
-    </Button>
-
-    <form
-      action={ROUTES.contact}
-      method="get"
-      class="mt-10 flex h-16 max-w-[43.1875rem] items-center rounded-[2.5rem] bg-white p-1 lg:mt-[4.4375rem] lg:h-20"
-    >
-      <label
-        for="hero-email"
-        class="flex min-w-0 flex-1 items-center gap-4 pl-5 lg:gap-[1.25rem] lg:pl-6"
-      >
-        <MailIcon class="h-5 w-7 shrink-0" aria-hidden="true" />
-        <span class="sr-only">Email address</span>
-        <input
-          id="hero-email"
-          name="email"
-          type="email"
-          required
-          autocomplete="email"
-          placeholder="Enter email address"
-          class="w-full min-w-0 bg-transparent text-lead font-medium text-ink outline-none placeholder:text-ink-muted"
-        />
-      </label>
-      <button
-        type="submit"
-        class="h-full shrink-0 rounded-[2.5rem] bg-brand px-5 text-lead font-medium text-white transition-colors hover:bg-[#006ee0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand lg:w-[12.6875rem]"
-      >
-        Get Started
-      </button>
-    </form>
-    <p class="mt-3 pl-6 text-lead leading-[1.69] font-medium">
-      30 day free trial,no credit card required
-    </p>
+    <div class="mt-8 flex flex-wrap gap-4 lg:mt-10">
+      <Button href="#contact" class="h-[3.75rem] px-8">
+        Book a demo
+      </Button>
+      <Button href="#how-it-works" variant="outline" class="h-[3.75rem] px-8">
+        See how it works
+      </Button>
+    </div>
+    <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-button font-medium text-ink-muted">
+      <li>You review and sign every note</li>
+      <li>HIPAA-compliant</li>
+      <li>BAA with every practice</li>
+    </ul>
   </div>
 
-  <div class="relative w-full max-w-[62.5rem] justify-self-end">
-    <!-- Animated product demo from the previous site. Safari plays the HEVC-alpha .mov,
-         other browsers the VP9-alpha WebM; both keep the transparent background. -->
+  <div class="overflow-hidden rounded-[1.25rem] bg-white shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)]">
+    <!-- 28-second product walkthrough (Remotion, 5:4 cut). Reduced motion shows a still. -->
     <video
-      class="h-auto w-full motion-reduce:hidden"
-      width="1000"
-      height="684"
+      class="block aspect-[5/4] h-auto w-full motion-reduce:hidden"
+      width="1200"
+      height="960"
       autoplay
       muted
       loop
       playsinline
-      preload="auto"
+      preload="metadata"
       poster={poster.src}
-      aria-label="CARE-E demo: the assistant opening chat, patient summary, visit note and encounter screens inside an EHR"
+      aria-label="CARE-E walkthrough: the clinician begins the visit, the SOAP note drafts from the conversation, and the clinician reviews and signs"
     >
-      <source src={withBase('/media/hero-demo.mov')} type='video/quicktime; codecs="hvc1"' />
-      <source src={withBase('/media/hero-demo.webm')} type="video/webm" />
+      <source src={withBase('/media/care-e-hero.mp4')} type="video/mp4" />
     </video>
     <Image
       src={poster}
-      alt="CARE-E assistant running inside an EHR on a laptop"
-      class="hidden h-auto w-full motion-reduce:block"
+      alt="CARE-E drafting a SOAP note next to the visit transcript"
+      class="hidden aspect-[5/4] h-auto w-full motion-reduce:block"
       loading="eager"
     />
   </div>

@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import beginVisit from '../../assets/home/steps/begin-visit.jpg';
+import noteBuilds from '../../assets/home/steps/note-builds.jpg';
+import reviewSign from '../../assets/home/steps/review-sign.jpg';
+
+// Frames from the hero video, cropped to the app window. Sample patient, no PHI.
+const steps = [
+  {
+    title: 'Tap Begin Visit. Then just talk.',
+    body: 'Once the patient’s consent is recorded, CARE-E listens in the background. No templates to fill in, no dictating afterwards.',
+    image: beginVisit,
+    alt: 'CARE-E visit screen with the appointment details and a live transcription panel',
+  },
+  {
+    title: 'The note builds itself.',
+    body: 'A structured SOAP note drafts in real time from the conversation, right next to the transcript it came from.',
+    image: noteBuilds,
+    alt: 'A SOAP note filling in beside the visit transcript',
+  },
+  {
+    title: 'You review. You sign.',
+    body: 'Edit anything you like, then sign. Nothing is final until you approve it.',
+    image: reviewSign,
+    alt: 'Review screen with the note, patient summary, orders and referrals checked, and the clinician’s signature',
+  },
+];
+---
+
+<section id="how-it-works" class="scroll-mt-28 bg-white py-14 lg:scroll-mt-40 lg:py-[6rem]">
+  <div class="container-page">
+    <p class="text-button font-semibold tracking-wide text-brand-green uppercase">How it works</p>
+    <h2 class="mt-3 max-w-[52rem] text-display font-semibold">
+      Charting done <span class="text-brand">before you leave the room.</span>
+    </h2>
+    <ol class="mt-10 grid gap-10 md:grid-cols-3 lg:mt-14 lg:gap-12">
+      {steps.map((step, i) => (
+        <li class="flex flex-col">
+          <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-[#f4f8fc]">
+            <Image
+              src={step.image}
+              alt={step.alt}
+              widths={[400, 804]}
+              sizes="(min-width: 768px) 33vw, 100vw"
+              class="h-auto w-full"
+            />
+          </div>
+          <p class="mt-6 flex size-10 items-center justify-center rounded-full bg-brand-tint text-button font-bold text-brand">
+            {i + 1}
+          </p>
+          <h3 class="mt-3 text-tab leading-[1.236] font-semibold">{step.title}</h3>
+          <p class="mt-2 text-lead font-medium text-ink-soft/80">{step.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
