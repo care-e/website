@@ -2,7 +2,7 @@
 title: 'AI-Assisted Patient Communication: Enhancing Efficiency and Empathy in Healthcare'
 description: 'The demands on healthcare providers have never been greater.'
 pubDate: 2025-03-12
-author: 'Bryan Sable'
+author: 'Bryan Sable, M.B.A.'
 heroImage: './images/ai-assisted-patient-communication-enhancing-efficiency-and-empathy-in-healthcare/image-2-2048x1143.png'
 heroAlt: 'Smiling physician in a white coat showing a tablet to a patient'
 categories:

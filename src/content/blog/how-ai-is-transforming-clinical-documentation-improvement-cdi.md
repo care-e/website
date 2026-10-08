@@ -2,7 +2,7 @@
 title: 'How AI is Transforming Clinical Documentation Improvement (CDI)'
 description: 'Clinical Documentation Improvement (CDI) plays a crucial role in ensuring accurate, complete, and compliant medical records.'
 pubDate: 2025-03-06
-author: 'Bryan Sable'
+author: 'Bryan Sable, M.B.A.'
 heroImage: './images/how-ai-is-transforming-clinical-documentation-improvement-cdi/cyborg_featureimage-1-2048x1151.png'
 heroAlt: 'Humanoid robot in a white coat working at a computer monitor'
 categories:

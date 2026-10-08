@@ -2,7 +2,7 @@
 title: 'Raising the Standard in AI-Powered Clinical Documentation: How CARE-E Compares to Abridge'
 description: 'The healthcare industry is rapidly adopting AI-driven clinical documentation solutions to alleviate the burden of administrative tasks on providers.'
 pubDate: 2025-03-06
-author: 'Bryan Sable'
+author: 'Bryan Sable, M.B.A.'
 heroImage: './images/raising-the-standard-in-ai-powered-clinical-documentation-how-care-e-compares-to-abridge/Frame-134-1-e1705569553171.jpg-1-2048x1266.png'
 heroAlt: 'Doctor interacting with a futuristic medical data interface showing a human body diagram'
 categories:
