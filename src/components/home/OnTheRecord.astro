@@ -1,0 +1,21 @@
+---
+import ConsentCard from '../product/ConsentCard.astro';
+import AuditTrail from '../product/AuditTrail.astro';
+---
+
+<section class="bg-wash py-14 lg:py-[6rem]">
+  <div class="container-page">
+    <p class="text-button font-semibold tracking-wide text-brand-green uppercase">On the record</p>
+    <h2 class="mt-3 max-w-[52rem] text-display font-semibold">
+      The patient says yes <span class="text-brand">before anything is recorded.</span>
+    </h2>
+    <p class="mt-4 max-w-[52rem] text-lead font-medium text-ink-soft/80">
+      CARE-E gives you a plain script to read, records the patient’s answer with a timestamp, and
+      keeps a log of every action in the visit. Your compliance team can export it any time.
+    </p>
+    <div class="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-2 lg:gap-10">
+      <ConsentCard />
+      <AuditTrail />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+---
+// Soft gate for the full-visit walkthrough: a short form, sent to Formspree like the contact form.
+// With WALKTHROUGH_VIDEO_URL set, a successful submit reveals the video in place; until the
+// recording exists it promises to email it. Not real access control, just enough to keep the
+// full workflow off the open page and to turn each view into a named lead.
+import Button from '../Button.astro';
+import { FORMSPREE_ENDPOINT, WALKTHROUGH_VIDEO_URL } from '../../consts';
+
+const fields = [
+  { name: 'name', label: 'Your name', autocomplete: 'name', type: 'text' },
+  { name: 'email', label: 'Work email', autocomplete: 'email', type: 'email' },
+  { name: 'organization', label: 'Practice', autocomplete: 'organization', type: 'text' },
+  { name: 'specialty', label: 'Specialty', autocomplete: 'off', type: 'text' },
+] as const;
+---
+
+<div class="rounded-[1.25rem] bg-white p-6 shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)] lg:p-10">
+  <form method="post" action={FORMSPREE_ENDPOINT} data-walkthrough-form data-video={WALKTHROUGH_VIDEO_URL}>
+    <input type="hidden" name="topic" value="Walkthrough request" />
+    <input type="hidden" name="_subject" value="care-e.ai: Walkthrough request" />
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+    <div class="grid gap-5 sm:grid-cols-2">
+      {fields.map((field) => (
+        <div>
+          <label for={`walkthrough-${field.name}`} class="block pl-2 text-button leading-[1.236] font-medium">
+            {field.label}
+            <span class="text-brand" aria-hidden="true"> *</span>
+          </label>
+          <input
+            id={`walkthrough-${field.name}`}
+            name={field.name}
+            type={field.type}
+            autocomplete={field.autocomplete}
+            required
+            class="mt-2.5 block h-[3.75rem] w-full rounded-[0.625rem] bg-field px-5 text-button font-normal outline-brand"
+          />
+        </div>
+      ))}
+    </div>
+    <Button type="submit" class="mt-6 h-[3.75rem] px-8">
+      {WALKTHROUGH_VIDEO_URL ? 'Watch the walkthrough' : 'Send me the walkthrough'}
+    </Button>
+    <p data-walkthrough-status role="status" aria-live="polite" class="mt-4 text-lead font-semibold"></p>
+  </form>
+  <div data-walkthrough-player hidden></div>
+</div>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-walkthrough-form]');
+  const status = form?.querySelector<HTMLElement>('[data-walkthrough-status]');
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  const player = document.querySelector<HTMLElement>('[data-walkthrough-player]');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!status || !button || !player) return;
+
+    button.disabled = true;
+    status.className = 'mt-4 text-lead font-semibold';
+    status.textContent = 'Sending…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => null);
+        const message = body?.errors?.map((e: { message: string }) => e.message).join(' ');
+        throw new Error(message || 'Something went wrong.');
+      }
+      const video = form.dataset.video;
+      if (video) {
+        const el = document.createElement('video');
+        el.src = video;
+        el.controls = true;
+        el.playsInline = true;
+        el.className = 'block aspect-video h-auto w-full rounded-[0.75rem] bg-black';
+        player.replaceChildren(el);
+        player.hidden = false;
+        form.hidden = true;
+        el.play().catch(() => {});
+      } else {
+        form.reset();
+        status.className = 'mt-4 text-lead font-semibold text-brand-green';
+        status.textContent = 'Thanks! We’ll email you the walkthrough shortly.';
+      }
+    } catch (error) {
+      status.className = 'mt-4 text-lead font-semibold text-[#e03131]';
+      status.textContent = `${(error as Error).message} Please try again or email info@care-e.ai.`;
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>

@@ -1,0 +1,30 @@
+---
+import AssistantAnswer from '../product/AssistantAnswer.astro';
+import { ROUTES } from '../../consts';
+---
+
+<section class="bg-white py-14 lg:py-[6rem]">
+  <div class="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+    <div>
+      <p class="text-button font-semibold tracking-wide text-brand-green uppercase">During the visit</p>
+      <h2 class="mt-3 text-display font-semibold">
+        A second set of eyes, <span class="text-brand">mid-visit.</span>
+      </h2>
+      <p class="mt-4 text-lead font-medium text-ink-soft/80">
+        Ask CARE-E about the patient in front of you. It answers from the chart and points out what
+        looks off, so nothing slips past you in a busy clinic.
+      </p>
+      <p class="mt-4 text-lead font-medium text-ink-soft/80">
+        Assessments, patient education and follow-ups sit in the same visit too. We’ll walk you
+        through them in the demo.
+      </p>
+      <a
+        href={ROUTES.product}
+        class="mt-6 inline-block text-button font-semibold text-brand underline-offset-4 hover:underline"
+      >
+        See a visit, start to finish →
+      </a>
+    </div>
+    <AssistantAnswer />
+  </div>
+</section>

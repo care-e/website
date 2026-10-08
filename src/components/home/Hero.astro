@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import poster from '../../assets/home/hero-poster.jpg';
 import Button from '../Button.astro';
 import { withBase } from '../../lib/url';
+import { ROUTES } from '../../consts';
 ---
 
 <section class="container-page grid items-center gap-10 pt-10 pb-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 lg:pt-[6rem] lg:pb-[5.5rem]">
@@ -21,8 +22,8 @@ import { withBase } from '../../lib/url';
       <Button href="#contact" class="h-[3.75rem] px-8">
         Book a demo
       </Button>
-      <Button href="#how-it-works" variant="outline" class="h-[3.75rem] px-8">
-        See how it works
+      <Button href={ROUTES.product} variant="outline" class="h-[3.75rem] px-8">
+        See it work
       </Button>
     </div>
     <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-button font-medium text-ink-muted">

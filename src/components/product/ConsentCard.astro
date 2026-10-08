@@ -1,0 +1,39 @@
+---
+// The consent prompt CARE-E shows before a visit is recorded. The script is the app's own wording.
+// Drawn here rather than screenshotted: it shows the moment without showing the app's layout.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'rounded-[1.25rem] bg-white p-6 shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)] lg:p-8',
+    className,
+  ]}
+>
+  <p class="text-button font-semibold">Read this to the patient before you begin.</p>
+  <blockquote class="mt-4 rounded-[0.75rem] bg-brand-tint/60 p-5 text-lead font-medium text-ink-soft">
+    “I’m using a secure AI tool to transcribe and document our visit. It doesn’t make medical
+    decisions, and your information stays protected under HIPAA. Is it okay if I use this today?”
+  </blockquote>
+  <div class="mt-5 flex flex-wrap items-center gap-3" aria-hidden="true">
+    <span class="inline-flex items-center gap-2 rounded-full bg-brand-green px-4 py-1.5 text-button font-semibold text-white">
+      <span class="size-2.5 rounded-full bg-white"></span>
+      Yes
+    </span>
+    <span class="inline-flex items-center gap-2 rounded-full border border-black/15 px-4 py-1.5 text-button font-medium text-ink-muted">
+      <span class="size-2.5 rounded-full border border-black/30"></span>
+      No
+    </span>
+    <span class="ml-auto rounded-full border border-brand/30 px-3 py-1 text-sm font-semibold text-brand">
+      Consent: verbal · 9:02 AM
+    </span>
+  </div>
+  <figcaption class="sr-only">
+    CARE-E’s consent prompt. The patient’s answer is recorded with a timestamp before anything is
+    recorded.
+  </figcaption>
+</figure>

@@ -1,0 +1,33 @@
+---
+// One illustrative exchange with the in-visit assistant, sample patient. Deliberately just the
+// question and answer: no panel, no controls, nothing about how it works.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'rounded-[1.25rem] bg-white p-6 shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)] lg:p-8',
+    className,
+  ]}
+>
+  <p class="ml-auto w-fit max-w-[85%] rounded-[1rem] rounded-br-sm bg-brand-tint px-4 py-3 text-button font-medium">
+    Anything I should know before I go in?
+  </p>
+  <div class="mt-4 max-w-[92%] rounded-[1rem] rounded-bl-sm border border-black/10 bg-[#f8fbff] px-5 py-4 text-button font-medium text-ink-soft">
+    <p>Two things from the chart:</p>
+    <ul class="mt-2 list-disc space-y-1.5 pl-5">
+      <li>
+        Last recorded BP was <strong class="font-semibold text-ink">168/102</strong> and SpO₂
+        <strong class="font-semibold text-ink">91%</strong>, both outside your set ranges.
+      </li>
+      <li>The medication list has two lisinopril entries that look like duplicates. Worth confirming.</li>
+    </ul>
+  </div>
+  <figcaption class="mt-4 text-sm font-medium text-ink-muted">
+    Sample patient. The assistant summarizes and flags; you decide what goes in the note.
+  </figcaption>
+</figure>
