@@ -11,26 +11,28 @@ export const SOCIAL_LINKS = {
   linkedin: 'https://www.linkedin.com/company/care-e-ai',
 };
 
+import { withBase } from './lib/url';
+
 // URL paths match the previous care-e.ai site so existing links and rankings keep working.
 export const ROUTES = {
-  home: '/',
-  about: '/about-us/',
-  leadership: '/about-us/#leadership',
-  partners: '/about-us/#partners',
-  solution: '/solution/',
-  cdi: '/clinical-documentation-improvement-cdi/',
-  rpa: '/robotic-process-automation-rpa/',
-  cds: '/clinical-decision-support-cds/',
-  patientEngagement: '/patient-engagement/',
-  realWorld: '/real-world-applications/',
-  advantage: '/care-e-advantage/',
-  analytics: '/care-e-analytics/',
-  security: '/security-and-compliance/',
-  whoWeWorkWith: '/who-we-work-with/',
-  pricing: '/pricing/',
-  blog: '/blog/',
-  faq: '/faq/',
-  contact: '/contact-us/',
+  home: withBase('/'),
+  about: withBase('/about-us/'),
+  leadership: withBase('/about-us/#leadership'),
+  partners: withBase('/about-us/#partners'),
+  solution: withBase('/solution/'),
+  cdi: withBase('/clinical-documentation-improvement-cdi/'),
+  rpa: withBase('/robotic-process-automation-rpa/'),
+  cds: withBase('/clinical-decision-support-cds/'),
+  patientEngagement: withBase('/patient-engagement/'),
+  realWorld: withBase('/real-world-applications/'),
+  advantage: withBase('/care-e-advantage/'),
+  analytics: withBase('/care-e-analytics/'),
+  security: withBase('/security-and-compliance/'),
+  whoWeWorkWith: withBase('/who-we-work-with/'),
+  pricing: withBase('/pricing/'),
+  blog: withBase('/blog/'),
+  faq: withBase('/faq/'),
+  contact: withBase('/contact-us/'),
 } as const;
 
 export interface NavItem {

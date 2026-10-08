@@ -5,8 +5,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: replace with the production URL. Required for canonical URLs, sitemap and robots.txt.
-  site: 'https://example.com',
+  // Production URL and path prefix. Defaults to the GitHub Pages project URL; once a custom
+  // domain points at GitHub Pages, set SITE_URL=https://care-e.ai and BASE_PATH=/ (see
+  // .github/workflows/deploy.yml) — no code changes needed.
+  site: process.env.SITE_URL || 'https://care-e.github.io',
+  base: process.env.BASE_PATH || '/website',
   trailingSlash: 'ignore',
   prefetch: true,
   integrations: [sitemap()],

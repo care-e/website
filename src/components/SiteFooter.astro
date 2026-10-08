@@ -3,7 +3,7 @@ import LogoWhite from '../assets/logos/care-e-logo-white.svg';
 import HipaaBadge from '../assets/logos/hipaa-compliant.svg';
 import XIcon from '../assets/icons/x.svg';
 import LinkedInIcon from '../assets/icons/linkedin.svg';
-import { CONTACT_EMAILS, FOOTER_NAV, SOCIAL_LINKS } from '../consts';
+import { CONTACT_EMAILS, FOOTER_NAV, ROUTES, SOCIAL_LINKS } from '../consts';
 
 const socials = [
   { label: 'CARE-E Ai on X', href: SOCIAL_LINKS.x, Icon: XIcon },
@@ -14,7 +14,7 @@ const socials = [
 <footer class="bg-brand text-white">
   <div class="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.45fr_1fr_0.85fr_0.6fr] lg:gap-8 lg:py-[3.75rem]">
     <div>
-      <a href="/" aria-label="CARE-E home" class="inline-block">
+      <a href={ROUTES.home} aria-label="CARE-E home" class="inline-block">
         <LogoWhite class="h-16 w-auto lg:h-[6rem]" />
       </a>
       <HipaaBadge

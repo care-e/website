@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { withBase } from './url';
 
 export type Post = CollectionEntry<'blog'>;
 
@@ -31,7 +32,9 @@ export const categorySlug = (name: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-export const categoryHref = (name: string) => `/blog/category/${categorySlug(name)}/`;
+export const categoryHref = (name: string) => withBase(`/blog/category/${categorySlug(name)}/`);
+
+export const postHref = (post: Post) => withBase(`/blog/${post.id}/`);
 
 /** Every category used by at least one post, alphabetically. */
 export const allCategories = (posts: Post[]) =>

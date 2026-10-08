@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import CategoryTags from './CategoryTags.astro';
-import { excerpt, formatDate, type Post } from '../../lib/blog';
+import { excerpt, formatDate, postHref, type Post } from '../../lib/blog';
 
 interface Props {
   post: Post;
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { post, variant = 'grid', maxTags, headingLevel: H = 'h3' } = Astro.props;
-const href = `/blog/${post.id}/`;
+const href = postHref(post);
 const { title, heroImage, categories, pubDate } = post.data;
 const tags = maxTags ? categories.slice(0, maxTags) : categories;
 const compact = variant === 'compact';

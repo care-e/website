@@ -7,7 +7,7 @@ import { MAIN_NAV, ROUTES } from '../consts';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href.split('#')[0]);
+  href === ROUTES.home ? path === ROUTES.home : path.startsWith(href.split('#')[0]);
 ---
 
 <header class="sticky top-0 z-50">
@@ -22,7 +22,7 @@ const isCurrent = (href: string) =>
       class="relative mx-auto flex h-20 w-[min(100%-2rem,108.25rem)] items-center justify-between gap-6 lg:h-[7.6875rem]"
       aria-label="Main"
     >
-      <a href="/" class="shrink-0" aria-label="CARE-E Ai home">
+      <a href={ROUTES.home} class="shrink-0" aria-label="CARE-E Ai home">
         <Logo class="h-11 w-auto lg:h-[3.75rem]" />
       </a>
 

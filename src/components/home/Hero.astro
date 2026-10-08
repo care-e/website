@@ -4,6 +4,7 @@ import MailIcon from '../../assets/icons/mail.svg';
 import poster from '../../assets/home/hero-demo-poster.png';
 import Button from '../Button.astro';
 import { ROUTES } from '../../consts';
+import { withBase } from '../../lib/url';
 ---
 
 <section class="container-page grid items-center gap-10 pt-10 pb-14 lg:grid-cols-[minmax(0,46.625rem)_minmax(0,1fr)] lg:gap-11 lg:pt-[8.0625rem] lg:pb-[5.875rem]">
@@ -66,8 +67,8 @@ import { ROUTES } from '../../consts';
       poster={poster.src}
       aria-label="CARE-E demo: the assistant opening chat, patient summary, visit note and encounter screens inside an EHR"
     >
-      <source src="/media/hero-demo.mov" type='video/quicktime; codecs="hvc1"' />
-      <source src="/media/hero-demo.webm" type="video/webm" />
+      <source src={withBase('/media/hero-demo.mov')} type='video/quicktime; codecs="hvc1"' />
+      <source src={withBase('/media/hero-demo.webm')} type="video/webm" />
     </video>
     <Image
       src={poster}

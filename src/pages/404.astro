@@ -1,10 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { ROUTES } from '../consts';
 ---
 
 <BaseLayout title="Page not found" noindex>
-  <h1>Page not found</h1>
-  <p>
-    <a href="/">Go back home</a>
-  </p>
+  <div class="bg-wash -mt-20 pt-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem]">
+    <section class="container-page flex flex-col items-center py-24 text-center lg:py-[9.375rem]">
+      <p class="text-[clamp(4rem,3rem+4vw,8rem)] leading-none font-bold text-brand">404</p>
+      <h1 class="mt-4 text-display font-semibold">Page not found</h1>
+      <p class="mt-4 max-w-[45rem] text-lead font-medium">
+        The page you’re looking for doesn’t exist or has moved.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <Button href={ROUTES.home} class="h-[3.75rem]">
+          Go to Home
+        </Button>
+        <Button href={ROUTES.contact} variant="outline" class="h-[3.75rem]">
+          Contact Us
+        </Button>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
