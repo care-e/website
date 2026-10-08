@@ -58,7 +58,6 @@ export const MAIN_NAV: NavItem[] = [
     href: ROUTES.solution,
     children: [
       { label: 'Clinical Documentation Improvement (CDI)', href: ROUTES.cdi },
-      { label: 'Robotic Process Automation (RPA)', href: ROUTES.rpa },
       { label: 'Clinical Decision Support (CDS)', href: ROUTES.cds },
       { label: 'Patient Engagement', href: ROUTES.patientEngagement },
       { label: 'Real-World Applications', href: ROUTES.realWorld },
@@ -84,7 +83,6 @@ export const FOOTER_NAV = [
     heading: 'Solution',
     links: [
       { label: 'Clinical Documentation', href: ROUTES.cdi },
-      { label: 'Robotic Process Automation', href: ROUTES.rpa },
       { label: 'Clinical Decision Support', href: ROUTES.cds },
       { label: 'Patient Engagement', href: ROUTES.patientEngagement },
       { label: 'Real-World Applications', href: ROUTES.realWorld },

@@ -24,7 +24,7 @@ export const SOLUTION_TABS: SolutionTab[] = [
     id: 'clinical-documentation',
     label: 'Clinical Documentation',
     intro:
-      'CARE-E automates repetitive administrative tasks, such as appointment scheduling, reminders, and data entry, allowing clinicians to spend more time with patients. Key processes include:',
+      'CARE-E takes documentation off the clinician’s plate, so more of the visit is spent with the patient. Key processes include:',
     items: [
       {
         title: 'Automated Structured Note Generation',
@@ -118,50 +118,11 @@ export const SOLUTION_TABS: SolutionTab[] = [
     href: ROUTES.analytics,
   },
   {
-    id: 'robotic-process-automation',
-    label: 'Robotic Process Automation (RPA)',
-    intro:
-      'CARE-E automates administrative tasks, allowing clinicians to focus more on patient care. Key processes include:',
-    items: [
-      {
-        title: 'System & Application Automation',
-        text: 'Automates credential entry, system logins, and document retrieval.',
-        icon: icon('automated-1'),
-      },
-      {
-        title: 'Data Management & Entry',
-        text: 'Extracts, inputs, and updates patient data seamlessly.',
-        icon: icon('data-management-1'),
-      },
-      {
-        title: 'Scheduling & Reminders',
-        text: 'Manages patient appointments and confirmations.',
-        icon: icon('schedule-2'),
-      },
-      {
-        title: 'Insurance & Prior Authorization Processing',
-        text: 'Validates insurance details and expedites authorization approvals.',
-        icon: icon('insurance-1'),
-      },
-      {
-        title: 'EHR Data Entry & Updates',
-        text: 'Automates patient record updates to reduce documentation workload and improve workflow efficiency.',
-        icon: icon('data-processing-1'),
-      },
-    ],
-    href: ROUTES.rpa,
-  },
-  {
     id: 'patient-engagement',
     label: 'Patient Engagement',
     intro:
       'CARE-E enhances patient interactions, communication, and adherence to care plans. Key processes include:',
     items: [
-      {
-        title: 'Scheduling & Reminders',
-        text: 'Automates appointment confirmations and follow-ups to reduce no-shows.',
-        icon: icon('reminder-1'),
-      },
       {
         title: 'Assessments & Surveys',
         text: 'Delivers pre-visit questionnaires and post-care surveys for better patient insights.',
