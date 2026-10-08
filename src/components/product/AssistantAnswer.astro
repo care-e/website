@@ -1,0 +1,40 @@
+---
+// A real exchange with the in-visit assistant (sample patient, 2026-10-08 test visit), shortened. Deliberately just the
+// question and answer: no panel, no controls, nothing about how it works.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<figure
+  class:list={[
+    'rounded-[1.25rem] bg-white p-6 shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)] lg:p-8',
+    className,
+  ]}
+>
+  <p class="ml-auto w-fit max-w-[85%] rounded-[1rem] rounded-br-sm bg-brand-tint px-4 py-3 text-button font-medium">
+    What should I double-check before I raise her lisinopril dose?
+  </p>
+  <div class="mt-4 max-w-[92%] rounded-[1rem] rounded-bl-sm border border-black/10 bg-[#f8fbff] px-5 py-4 text-button font-medium text-ink-soft">
+    <p>Before increasing lisinopril, consider confirming:</p>
+    <ul class="mt-2 list-disc space-y-1.5 pl-5">
+      <li>
+        <strong class="font-semibold text-ink">Pregnancy status.</strong> She’s 20; lisinopril isn’t
+        safe in pregnancy.
+      </li>
+      <li>
+        <strong class="font-semibold text-ink">Kidney function and potassium</strong> before the
+        change, with repeat labs after.
+      </li>
+      <li>
+        <strong class="font-semibold text-ink">Duplicate orders.</strong> The chart lists lisinopril
+        twice with no clear dose.
+      </li>
+    </ul>
+  </div>
+  <figcaption class="mt-4 text-sm font-medium text-ink-muted">
+    A real answer from CARE-E’s assistant, shortened. Sample patient. It flags; you decide.
+  </figcaption>
+</figure>

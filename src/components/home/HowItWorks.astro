@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import beginVisit from '../../assets/home/steps/begin-visit.jpg';
-import noteBuilds from '../../assets/home/steps/note-builds.jpg';
-import reviewSign from '../../assets/home/steps/review-sign.jpg';
+import noteBuilds from '../../assets/product/note-builds.jpg';
+import reviewCheck from '../../assets/product/review-check.jpg';
 
-// Frames from the hero video, cropped to the app window. Sample patient, no PHI.
+// Step 1 is a frame from the hero video; steps 2 and 3 are real captures from a test visit. Sample patient, no PHI.
 const steps = [
   {
     title: 'Tap Begin Visit. Then just talk.',
@@ -16,13 +16,13 @@ const steps = [
     title: 'The note builds itself.',
     body: 'A structured SOAP note drafts in real time from the conversation, right next to the transcript it came from.',
     image: noteBuilds,
-    alt: 'A SOAP note filling in beside the visit transcript',
+    alt: 'CARE-E’s summary of the visit beside the live transcript',
   },
   {
-    title: 'You review. You sign.',
-    body: 'Edit anything you like, then sign. Nothing is final until you approve it.',
-    image: reviewSign,
-    alt: 'Review screen with the note, patient summary, orders and referrals checked, and the clinician’s signature',
+    title: 'You review. You approve.',
+    body: 'Edit anything you like. CARE-E checks that you’ve reviewed what it wrote, and nothing is final until you approve it.',
+    image: reviewCheck,
+    alt: 'CARE-E asking the clinician to confirm they reviewed the AI-written sections',
   },
 ];
 ---

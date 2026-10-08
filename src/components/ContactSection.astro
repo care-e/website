@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import contactImage from '../assets/home/contact.png';
 import type { HTMLAttributes } from 'astro/types';
 import Button from './Button.astro';
-import { FORMSPREE_ENDPOINT } from '../consts';
+import { BOOKING_URL, FORMSPREE_ENDPOINT } from '../consts';
 
 interface Props {
   /** Heading level, so the section works as a page's h1 or as a lower section. */
@@ -84,6 +84,7 @@ const fields: Field[] = [
          posts in place and shows a status line; without it Formspree shows its own thank-you page. -->
     <form
       class="mt-8 lg:mt-[2.1875rem]"
+      data-booking={BOOKING_URL}
       method="post"
       action={FORMSPREE_ENDPOINT}
       data-contact-form
@@ -203,7 +204,16 @@ const fields: Field[] = [
       }
       form.reset();
       status.className = 'text-lead font-semibold text-brand-green';
-      status.textContent = 'Thanks! We got your message and will be in touch soon.';
+      status.textContent = 'Thanks! We got your message and will be in touch soon. ';
+      if (data.get('topic') === 'Requesting Demo' && form.dataset.booking) {
+        const link = document.createElement('a');
+        link.href = form.dataset.booking;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.className = 'text-brand underline underline-offset-4';
+        link.textContent = 'Want to pick a time now?';
+        status.append(link);
+      }
     } catch (error) {
       status.className = 'text-lead font-semibold text-[#e03131]';
       status.textContent = `${(error as Error).message} Please try again or email info@care-e.ai.`;

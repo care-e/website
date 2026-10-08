@@ -1,0 +1,125 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ConsentCard from '../components/product/ConsentCard.astro';
+import WalkthroughGate from '../components/product/WalkthroughGate.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { BOOKING_URL } from '../consts';
+// Real captures from a test visit (sample patient, played-back conversation), cropped tight.
+import noteBuilds from '../assets/product/note-builds.jpg';
+import reviewCheck from '../assets/product/review-check.jpg';
+
+// Public teaser: three moments of a visit, outcome first. The full workflow lives in the gated
+// walkthrough and the live demo (cave decision "What stays demo-only").
+const afterBooking = [
+  { title: 'A live demo', body: 'Bring a visit type you dread charting. We run it live.' },
+  { title: 'BAA signed', body: 'Before any patient data touches CARE-E.' },
+  { title: 'Connected to your EHR', body: 'CARE-E connects to any certified EHR.' },
+  { title: 'Your first visits', body: 'Start with one clinician and a few visits, then roll out.' },
+];
+---
+
+<BaseLayout
+  title="See CARE-E work"
+  description="What a visit looks like with CARE-E: the patient says yes, you talk, the note builds, and you approve it before you leave the room."
+>
+  <div class="bg-wash -mt-20 pt-20 lg:-mt-[7.6875rem] lg:pt-[7.6875rem]">
+    <section class="container-page pt-10 pb-14 lg:pt-[6rem] lg:pb-[5rem]">
+      <p class="text-button font-semibold tracking-wide text-brand-green uppercase">See it work</p>
+      <h1 class="mt-4 max-w-[56rem] text-display font-bold">
+        One visit, <span class="text-brand">three moments.</span>
+      </h1>
+      <p class="mt-5 max-w-[44rem] text-lead font-medium text-ink-soft">
+        Here’s what changes for you in the exam room. For the whole visit, start to finish, watch
+        the walkthrough or book a demo.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <Button href="#walkthrough" class="h-[3.75rem] px-8">Watch the full visit</Button>
+        <Button href={BOOKING_URL} target="_blank" rel="noopener" variant="outline" class="h-[3.75rem] px-8">Book a demo</Button>
+      </div>
+    </section>
+  </div>
+
+  <section class="bg-white py-14 lg:py-[6rem]">
+    <ol class="container-page space-y-16 lg:space-y-24">
+      <li class="grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <p class="flex size-10 items-center justify-center rounded-full bg-brand-tint text-button font-bold text-brand">1</p>
+          <h2 class="mt-4 text-title leading-[1.236] font-semibold">The patient says yes.</h2>
+          <p class="mt-3 text-lead font-medium text-ink-soft/80">
+            Read one plain sentence. Their answer is recorded with a timestamp before CARE-E listens
+            to anything.
+          </p>
+          <p class="mt-3 text-lead font-semibold text-brand">For you: consent you can point to, every time.</p>
+        </div>
+        <ConsentCard />
+      </li>
+      <li class="grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
+        <div class="lg:order-2">
+          <p class="flex size-10 items-center justify-center rounded-full bg-brand-tint text-button font-bold text-brand">2</p>
+          <h2 class="mt-4 text-title leading-[1.236] font-semibold">You talk. The note builds.</h2>
+          <p class="mt-3 text-lead font-medium text-ink-soft/80">
+            Face the patient, not the screen. A structured note drafts from the conversation as it
+            happens.
+          </p>
+          <p class="mt-3 text-lead font-semibold text-brand">For you: no typing during the visit, no dictating after it.</p>
+        </div>
+        <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-[#f4f8fc] lg:order-1">
+          <Image src={noteBuilds} alt="CARE-E’s summary of the visit beside the live transcript (sample patient)" widths={[480, 806]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
+        </div>
+      </li>
+      <li class="grid items-center gap-8 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <p class="flex size-10 items-center justify-center rounded-full bg-brand-tint text-button font-bold text-brand">3</p>
+          <h2 class="mt-4 text-title leading-[1.236] font-semibold">You approve it.</h2>
+          <p class="mt-3 text-lead font-medium text-ink-soft/80">
+            Read it and change anything. CARE-E won’t move on until you confirm you’ve reviewed what it wrote, and nothing reaches the chart until you approve it.
+          </p>
+          <p class="mt-3 text-lead font-semibold text-brand">For you: the chart is closed before you leave the room.</p>
+        </div>
+        <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-[#f4f8fc]">
+          <Image src={reviewCheck} alt="CARE-E asking the clinician to confirm they reviewed the AI-written sections before moving on" widths={[480, 806]} sizes="(min-width: 1024px) 45vw, 100vw" class="h-auto w-full" />
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="walkthrough" class="scroll-mt-28 bg-wash py-14 lg:scroll-mt-40 lg:py-[6rem]">
+    <div class="container-page grid items-start gap-10 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
+      <div>
+        <h2 class="text-display font-semibold">
+          See the <span class="text-brand">whole visit.</span>
+        </h2>
+        <p class="mt-4 text-lead font-medium text-ink-soft/80">
+          A short recorded walkthrough of one visit, start to finish, with a sample patient. Tell us
+          where to send it.
+        </p>
+      </div>
+      <WalkthroughGate />
+    </div>
+  </section>
+
+  <section class="bg-white py-14 lg:py-[6rem]">
+    <div class="container-page">
+      <h2 class="max-w-[52rem] text-display font-semibold">
+        What happens <span class="text-brand">after you book.</span>
+      </h2>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <Button href={BOOKING_URL} target="_blank" rel="noopener" class="h-[3.75rem] px-8">Pick a time</Button>
+        <p class="text-lead font-medium text-ink-soft/80">Or send us a note below and we’ll reach out.</p>
+      </div>
+      <ol class="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+        {afterBooking.map((step, i) => (
+          <li class="rounded-[1rem] bg-[#f4f8fc] p-6 lg:p-7">
+            <p class="text-button font-bold text-brand-green">Step {i + 1}</p>
+            <h3 class="mt-2 text-tab leading-[1.236] font-semibold text-brand">{step.title}</h3>
+            <p class="mt-2 text-lead font-medium">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <ContactSection />
+</BaseLayout>

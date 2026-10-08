@@ -7,6 +7,13 @@ export const SITE_LOCALE = 'en';
 // Contact form endpoint (Formspree form "care-e.ai contact" on Bryan's account; sends to the contact@care-e.ai Google Group = Bryan + Matt).
 export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mbgdoakj';
 
+// Gated full-visit walkthrough on /product. Empty until the recording exists: the form then
+// promises to email it instead of revealing it in place.
+export const WALKTHROUGH_VIDEO_URL = '';
+
+// Bryan's Google Calendar booking page (the same open slots listed on bryansable.com).
+export const BOOKING_URL = 'https://calendar.app.google/mwtHXStugpdYxipi8';
+
 export const CONTACT_EMAILS = ['sales@care-e.ai', 'info@care-e.ai'];
 
 export const SOCIAL_LINKS = {
@@ -19,6 +26,7 @@ import { withBase } from './lib/url';
 // URL paths match the previous care-e.ai site so existing links and rankings keep working.
 export const ROUTES = {
   home: withBase('/'),
+  product: withBase('/product/'),
   about: withBase('/about-us/'),
   leadership: withBase('/about-us/#leadership'),
   partners: withBase('/about-us/#partners'),
@@ -67,6 +75,7 @@ export const MAIN_NAV: NavItem[] = [
       { label: 'Security and Compliance', href: ROUTES.security },
     ],
   },
+  { label: 'See It Work', href: ROUTES.product },
   { label: 'Who We Work With', href: ROUTES.whoWeWorkWith },
   { label: 'Pricing', href: ROUTES.pricing },
   {
