@@ -32,27 +32,85 @@ import { withBase } from '../../lib/url';
     </ul>
   </div>
 
-  <div class="overflow-hidden rounded-[1.25rem] bg-white shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)]">
-    <!-- 28-second product walkthrough (Remotion, 5:4 cut). Reduced motion shows a still. -->
+  <div
+    class="relative overflow-hidden rounded-[1.25rem] bg-white shadow-[0_1.5rem_4rem_-1rem_rgb(9_128_254/0.25)]"
+    data-hero-film
+  >
+    <!--
+      The 59-second CareE film (Remotion, 16:9, cut 2): the visit captured with consent,
+      screeners scored, the note drafted in the room, signed, and in the chart before the
+      patient reaches the front desk. It loops muted; the button restarts it with the
+      narration. Reduced motion shows a still.
+    -->
     <video
-      class="block aspect-[5/4] h-auto w-full motion-reduce:hidden"
-      width="1200"
-      height="960"
+      class="block aspect-video h-auto w-full motion-reduce:hidden"
+      width="1280"
+      height="720"
       autoplay
       muted
       loop
       playsinline
       preload="metadata"
       poster={poster.src}
-      aria-label="CARE-E walkthrough: the clinician begins the visit, the SOAP note drafts from the conversation, and the clinician reviews and signs"
+      aria-label="CARE-E film: with the patient's consent the visit is captured, the screeners are scored, the note is drafted in the room, the clinician reviews and signs, and the note is in the chart before the patient reaches the front desk"
     >
       <source src={withBase('/media/care-e-hero.mp4')} type="video/mp4" />
     </video>
     <Image
       src={poster}
-      alt="CARE-E drafting a SOAP note next to the visit transcript"
-      class="hidden aspect-[5/4] h-auto w-full motion-reduce:block"
+      alt="CARE-E: the signed clinical note released to the practice's own chart"
+      class="hidden aspect-video h-auto w-full motion-reduce:block"
       loading="eager"
     />
+    <button
+      type="button"
+      class="absolute right-4 bottom-4 inline-flex h-11 items-center gap-2 rounded-full bg-white/95 px-5 text-button font-semibold text-ink shadow-[0_0.5rem_1.5rem_-0.5rem_rgb(9_128_254/0.45)] ring-1 ring-brand/20 backdrop-blur transition hover:bg-white motion-reduce:hidden"
+      data-hero-sound
+      aria-pressed="false"
+    >
+      <svg aria-hidden="true" viewBox="0 0 20 20" class="size-5 fill-current" data-icon="play">
+        <path d="M6 4.5v11l9-5.5-9-5.5Z" />
+      </svg>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        class="hidden size-5 fill-current"
+        data-icon="mute"
+      >
+        <path d="M3 7.5v5h3l4 3.5v-12L6 7.5H3Z" />
+        <path d="M12.3 7.3 13.7 5.9 15.5 7.7 17.3 5.9 18.7 7.3 16.9 9.1 18.7 10.9 17.3 12.3 15.5 10.5 13.7 12.3 12.3 10.9 14.1 9.1Z" />
+      </svg>
+      <span data-label>Play with sound</span>
+    </button>
   </div>
 </section>
+
+<script>
+  // The hero film loops muted. One click restarts it from the top with the narration;
+  // another mutes it again. Nothing here matters when the video is hidden (reduced motion).
+  const root = document.querySelector<HTMLElement>('[data-hero-film]');
+  const video = root?.querySelector<HTMLVideoElement>('video');
+  const button = root?.querySelector<HTMLButtonElement>('[data-hero-sound]');
+  if (video && button) {
+    const label = button.querySelector<HTMLElement>('[data-label]');
+    const play = button.querySelector<SVGElement>('[data-icon="play"]');
+    const mute = button.querySelector<SVGElement>('[data-icon="mute"]');
+    const show = (withSound: boolean) => {
+      button.setAttribute('aria-pressed', String(withSound));
+      if (label) label.textContent = withSound ? 'Mute' : 'Play with sound';
+      play?.classList.toggle('hidden', withSound);
+      mute?.classList.toggle('hidden', !withSound);
+    };
+    button.addEventListener('click', () => {
+      if (video.muted) {
+        video.currentTime = 0;
+        video.muted = false;
+        video.play().catch(() => undefined);
+        show(true);
+      } else {
+        video.muted = true;
+        show(false);
+      }
+    });
+  }
+</script>
